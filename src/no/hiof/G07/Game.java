@@ -56,4 +56,15 @@ public class Game {
     public void setPauseScreen(Menu pauseScreen) {
         this.pauseScreen = pauseScreen;
     }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "window=" + window +
+                ", type=" + type +
+                ", players=" + players +
+                ", startScreen=" + startScreen +
+                ", pauseScreen=" + pauseScreen +
+                '}';
+    }
 }

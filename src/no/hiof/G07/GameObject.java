@@ -6,6 +6,10 @@ public abstract class GameObject {
     private int velocityX;
     private int velocityY;
 
+    public GameObject(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
 
     public abstract void tick();
@@ -41,5 +45,15 @@ public abstract class GameObject {
 
     public void setVelocityY(int velocityY) {
         this.velocityY = velocityY;
+    }
+
+    @Override
+    public String toString() {
+        return "GameObject{" +
+                "x=" + x +
+                ", y=" + y +
+                ", velocityX=" + velocityX +
+                ", velocityY=" + velocityY +
+                '}';
     }
 }

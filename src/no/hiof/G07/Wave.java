@@ -24,4 +24,11 @@ public class Wave extends Gametype {
     public void startNextRound() {
         round++;
     }
+
+    @Override
+    public String toString() {
+        return "Wave{" +
+                "round=" + round +
+                '}';
+    }
 }

@@ -9,4 +9,9 @@ public class Linear extends Gametype {
     boolean checkEnd() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Linear{}";
+    }
 }
