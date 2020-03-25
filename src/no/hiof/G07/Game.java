@@ -4,17 +4,25 @@ import java.util.ArrayList;
 
 public class Game {
 
+    private String name;
     private Window window;
     private Gametype type;
     private ArrayList<Player> players;
-    private Menu startScreen, pauseScreen;
-
+    private MenuConfig.Menu startMenu, pauseMenu;
 
     // GameView (som mario eller pokemon) er ikke med,
     // Heller ikke gravity pga vi skulle bestemme oss for ên
 
     private void start(){
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Window getWindow() {
@@ -41,20 +49,20 @@ public class Game {
         this.players = players;
     }
 
-    public Menu getStartScreen() {
-        return startScreen;
+    public MenuConfig.Menu getStartMenu() {
+        return startMenu;
     }
 
-    public void setStartScreen(Menu startScreen) {
-        this.startScreen = startScreen;
+    public void setStartMenu(MenuConfig.Menu startMenu) {
+        this.startMenu = startMenu;
     }
 
-    public Menu getPauseScreen() {
-        return pauseScreen;
+    public MenuConfig.Menu getPauseMenu() {
+        return pauseMenu;
     }
 
-    public void setPauseScreen(Menu pauseScreen) {
-        this.pauseScreen = pauseScreen;
+    public void setPauseMenu(MenuConfig.Menu pauseMenu) {
+        this.pauseMenu = pauseMenu;
     }
 
     @Override
@@ -63,8 +71,8 @@ public class Game {
                 "window=" + window +
                 ", type=" + type +
                 ", players=" + players +
-                ", startScreen=" + startScreen +
-                ", pauseScreen=" + pauseScreen +
+                ", startMenu=" + startMenu +
+                ", pauseMenu=" + pauseMenu +
                 '}';
     }
 }

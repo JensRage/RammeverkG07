@@ -1,16 +1,52 @@
 package no.hiof.G07;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
+
 public class Window {
 
     private int width, height;
-    private Sprite background;
+    private String name;
+    JFrame frame = new JFrame("My First GUI");
 
-    public Window(int width, int height) {
+    // TODO:: Background Sprite?
+    private File background;
+
+    public Window(String name, int width, int height) {
+        this.name = name;
         this.width = width;
         this.height = height;
     }
 
-    public Window() {
+    public Window(String name) {
+        this.name = name;
+        width = 800;
+        height = 600;
+    }
+
+    public void openWindow(){
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(width,height);
+
+        // Sets background
+        if(background != null && background.isFile()){
+            try {
+                frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(background))));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        frame.setVisible(true);
+    }
+
+    public void addComponent(JComponent comp){
+        if(comp instanceof JMenuBar){
+            frame.setJMenuBar((JMenuBar) comp);
+        }
     }
 
     public int getWidth() {
@@ -29,7 +65,7 @@ public class Window {
         this.height = height;
     }
 
-    public Sprite getBackground() { return background; }
+    public File getBackground() { return background; }
 
-    public void setBackground(Sprite background) { this.background = background; }
+    public void setBackground(File background) { this.background = background; }
 }
