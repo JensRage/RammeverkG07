@@ -10,7 +10,7 @@ public class Handler {
         this.objects = new ArrayList<>();
     }
 
-    public void tick(){
+    public void tick(double delta){
         for (GameObject object : objects) {
             object.tick();
         }

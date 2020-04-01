@@ -14,7 +14,7 @@ public abstract class GameObject {
     }
 
 
-    public abstract void tick();
+    public abstract void tick(double delta);
     public abstract void render(Graphics2D g);
 
     public int getX() {
