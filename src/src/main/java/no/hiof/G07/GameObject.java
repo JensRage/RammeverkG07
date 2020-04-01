@@ -1,5 +1,7 @@
 package no.hiof.G07;
 
+import java.awt.*;
+
 public abstract class GameObject {
     private int x;
     private int y;
@@ -11,8 +13,9 @@ public abstract class GameObject {
         this.y = y;
     }
 
-    public abstract void tick();
-    public abstract void render();
+
+    public abstract void tick(double delta);
+    public abstract void render(Graphics2D g);
 
     public int getX() {
         return x;

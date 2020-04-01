@@ -1,5 +1,6 @@
 package no.hiof.G07;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Handler {
@@ -9,15 +10,15 @@ public class Handler {
         this.objects = new ArrayList<>();
     }
 
-    public void tick(){
+    public void tick(double delta){
         for (GameObject object : objects) {
             object.tick();
         }
     }
 
-    public void render(){
+    public void render(Graphics2D g){
         for (GameObject object : objects) {
-            object.render();
+            object.render(g);
         }
     }
 
