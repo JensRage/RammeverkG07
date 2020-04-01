@@ -1,5 +1,6 @@
 package no.hiof.G07;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Handler {
@@ -15,9 +16,9 @@ public class Handler {
         }
     }
 
-    public void render(){
+    public void render(Graphics2D g){
         for (GameObject object : objects) {
-            object.render();
+            object.render(g);
         }
     }
 
