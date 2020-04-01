@@ -108,7 +108,8 @@ public class Game extends Canvas implements Runnable{
 
         handler.render(g);
 
-
+        g.dispose();
+        bs.show();
     }
 
     public int getFps() {
