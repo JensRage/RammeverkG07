@@ -18,12 +18,14 @@ public class Window {
         this.name = name;
         this.width = width;
         this.height = height;
+        frame.addKeyListener(new Controls());
     }
 
     public Window(String name) {
         this.name = name;
         width = 800;
         height = 600;
+        frame.addKeyListener(new Controls());
     }
 
     public void openWindow(){

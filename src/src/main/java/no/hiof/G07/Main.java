@@ -1,19 +1,25 @@
 package no.hiof.G07;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.io.File;
-import java.util.ArrayList;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.*;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
+
+import org.reflections.Reflections;
+import org.reflections.scanners.MethodAnnotationsScanner;
+import org.reflections.scanners.SubTypesScanner;
+
 
 public class Main {
 
-    public static void main(String[] args) {
-    // write your code here
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
+        // write your code here
 
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(new Player(10,20));
+        players.add(new Player(20,10));
 
         Game game = new Game();
         game.setName("Gamerino");
@@ -34,6 +40,6 @@ public class Main {
 
         game.setType(new Wave());
         game.setPlayers(players);
-
     }
+
 }

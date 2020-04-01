@@ -11,7 +11,6 @@ public abstract class GameObject {
         this.y = y;
     }
 
-
     public abstract void tick();
     public abstract void render();
 
