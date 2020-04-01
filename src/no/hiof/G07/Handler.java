@@ -30,4 +30,13 @@ public class Handler {
         objects.remove(object);
         return object;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder returnString = new StringBuilder();
+        for (int i = 0; i < objects.size(); i++) {
+            returnString.append("#").append(i).append(":").append(objects.get(i).toString());
+        }
+        return returnString.toString();
+    }
 }
