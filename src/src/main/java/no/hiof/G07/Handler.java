@@ -12,7 +12,7 @@ public class Handler {
 
     public void tick(double delta){
         for (GameObject object : objects) {
-            object.tick();
+            object.tick(delta);
         }
     }
 

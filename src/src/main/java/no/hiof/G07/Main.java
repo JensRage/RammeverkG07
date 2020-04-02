@@ -7,14 +7,9 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 
-import org.reflections.Reflections;
-import org.reflections.scanners.MethodAnnotationsScanner;
-import org.reflections.scanners.SubTypesScanner;
-
-
 public class Main {
 
-    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
+    public static void main(String[] args) {
         // write your code here
 
         ArrayList<Player> players = new ArrayList<Player>();

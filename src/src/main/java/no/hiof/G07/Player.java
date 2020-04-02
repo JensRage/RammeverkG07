@@ -1,5 +1,6 @@
 package no.hiof.G07;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +15,13 @@ public class Player extends Unit {
     }
 
     @Override
-    public void tick() {
-        super.tick();
+    public void tick(double delta) {
+        super.tick(delta);
     }
 
     @Override
-    public void render() {
-        super.render();
+    public void render(Graphics2D g) {
+        super.render(g);
     }
 
     // TODO:: Denne kan vi da endre etterpå

@@ -1,5 +1,7 @@
 package no.hiof.G07;
 
+import java.awt.*;
+
 public class Unit extends GameObject {
 
     public Unit(int x, int y) {
@@ -7,13 +9,13 @@ public class Unit extends GameObject {
     }
 
     @Override
-    public void tick() {
+    public void tick(double delta) {
         setX(getX() + getVelocityX());
         setY(getY() + getVelocityY());
     }
 
     @Override
-    public void render() {
+    public void render(Graphics2D g) {
 
     }
 }
