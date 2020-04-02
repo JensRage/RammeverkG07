@@ -2,6 +2,13 @@ package no.hiof.G07;
 
 import java.awt.*;
 
+/**
+ * This class is designed to be the base for all future GameObjects.
+ * It holds basic information about the Object.
+ * @author emilyhbh (Emily Healey)
+ * @author jenshr (Jens Rage)
+ * @version 0.1
+ */
 public abstract class GameObject {
     private int x;
     private int y;
