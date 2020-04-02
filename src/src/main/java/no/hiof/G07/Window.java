@@ -30,6 +30,7 @@ public class Window {
 
     public void openWindow(){
 
+        frame.setTitle(name);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(width,height);
 
@@ -49,6 +50,10 @@ public class Window {
         if(comp instanceof JMenuBar){
             frame.setJMenuBar((JMenuBar) comp);
         }
+    }
+
+    public void addGameToFrame(Game game){
+        frame.add(game);
     }
 
     public int getWidth() {
