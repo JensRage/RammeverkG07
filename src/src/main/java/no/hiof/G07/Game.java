@@ -30,7 +30,7 @@ public class Game extends Canvas implements Runnable{
     }
 
     private synchronized void start(){
-        window.addGameToFrame(this);
+        //window.addGameToFrame(this);
         window.openWindow();
         thread = new Thread(this);
         //Calls run();

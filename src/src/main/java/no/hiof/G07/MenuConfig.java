@@ -10,12 +10,10 @@ import java.util.ArrayList;
 public class MenuConfig {
 
     private Menu menu = new Menu();
-    private Game game;
 
     private ArrayList<JMenuItem> menuItems = new ArrayList<>();
 
-    public MenuConfig(Game game) {
-        this.game = game;
+    public MenuConfig() {
     }
 
     public MenuConfig hasContinueBtn(){
@@ -49,7 +47,7 @@ public class MenuConfig {
     public MenuConfig hasSaveGameBtn(){
         menuItems.add(new JMenuItem(new AbstractAction("Save Game") {
             public void actionPerformed(ActionEvent e) {
-                saveGame(game);
+                saveGame();
             }
         }));
         return this;
@@ -76,15 +74,12 @@ public class MenuConfig {
         System.out.println("Continue called");
     }
 
-    // TODO:: implement way to read save file content and assign vars
-    private Game loadGame(File saveFile){
+    private void loadGame(File saveFile){
 
         if(!saveFile.isFile()){
             System.out.println("The save file is invalid");
-            return null;
+            return;
         }
-
-        Game loadedGame = new Game();
 
         BufferedReader objReader = null;
         try {
@@ -92,7 +87,7 @@ public class MenuConfig {
             objReader = new BufferedReader(new FileReader(saveFile));
 
             while ((strCurrentLine = objReader.readLine()) != null)
-                System.out.println(strCurrentLine);
+                System.out.println(strCurrentLine); // TODO:: her leser hver linje
 
             objReader.close();
         }
@@ -100,12 +95,9 @@ public class MenuConfig {
             e.printStackTrace();
         }
 
-        return loadedGame;
-
     }
 
-    // TODO:: figure out way to save variables, so far is the game.toString() method
-    private void saveGame(Game game) {
+    private void saveGame() {
 
         File file = null;
         int saveNr = 0;
@@ -119,7 +111,7 @@ public class MenuConfig {
         BufferedWriter out = null;
         try {
             out = new BufferedWriter(new FileWriter(file));
-            out.write(game.toString());
+            out.write("Temporary shit");    // TODO:: write to file here
             out.close();
             System.out.println("Saved Game Successfully");
         } catch (IOException e) {

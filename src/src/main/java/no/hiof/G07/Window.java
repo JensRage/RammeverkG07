@@ -9,7 +9,7 @@ public class Window {
 
     private int width, height;
     private String name;
-    JFrame frame = new JFrame("My First GUI");
+    JFrame frame = new JFrame();
 
     // TODO:: Background Sprite?
     private File background;
@@ -52,7 +52,7 @@ public class Window {
         }
     }
 
-    public void addGameToFrame(Game game){
+    public void addGameToFrame(GameConfig.Game game){
         frame.add(game);
     }
 
@@ -75,4 +75,8 @@ public class Window {
     public File getBackground() { return background; }
 
     public void setBackground(File background) { this.background = background; }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
