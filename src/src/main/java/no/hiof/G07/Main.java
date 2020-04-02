@@ -14,7 +14,9 @@ public class Main {
 
         ArrayList<Player> players = new ArrayList<Player>();
         players.add(new Player(10,20));
-        players.add(new Player(20,10));
+        Player p2 = new Player(20,10);
+        p2.setMovementControl(Player.MovementControl.ARROWS);
+        players.add(p2);
 
         Game game = new Game();
         game.setName("Gamerino");
