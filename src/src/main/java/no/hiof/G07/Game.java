@@ -9,7 +9,7 @@ public class Game extends Canvas implements Runnable{
     private String name;
     private Window window;
     private Gametype type;
-    private ArrayList<Player> players;
+    private ArrayList<Player> players = new ArrayList<>();
     private MenuConfig.Menu startMenu, pauseMenu;
     private Handler handler;
     private Thread thread;
@@ -21,7 +21,18 @@ public class Game extends Canvas implements Runnable{
     // GameView (som mario eller pokemon) er ikke med,
     // Heller ikke gravity pga vi skulle bestemme oss for ên
 
+    //Default constructor
+    public Game(){
+        TARGET_FPS = 60;
+        name = "new Game";
+        window = new Window(name, 800, 600);
+        handler = new Handler();
+        this.start();
+    }
+
     private synchronized void start(){
+        window.addGameToFrame(this);
+        window.openWindow();
         thread = new Thread(this);
         //Calls run();
         thread.start();
@@ -40,6 +51,8 @@ public class Game extends Canvas implements Runnable{
 
     @Override
     public void run() {
+
+        //http://www.java-gaming.org/index.php?topic=24220.0
         long lastLoopTime = System.nanoTime();
         final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
         int lastFpsTime = 0;
@@ -177,5 +190,9 @@ public class Game extends Canvas implements Runnable{
                 ", startMenu=" + startMenu +
                 ", pauseMenu=" + pauseMenu +
                 '}';
+    }
+
+    public static void main(String[] args){
+        new Game();
     }
 }
