@@ -14,6 +14,7 @@ public class Game extends Canvas implements Runnable{
     private Handler handler;
     private Thread thread;
     private int fps;
+    private final int TARGET_FPS;
 
     private boolean running;
 
@@ -40,7 +41,6 @@ public class Game extends Canvas implements Runnable{
     @Override
     public void run() {
         long lastLoopTime = System.nanoTime();
-        final int TARGET_FPS = 60;
         final long OPTIMAL_TIME = 1000000000 / TARGET_FPS;
         int lastFpsTime = 0;
 
@@ -78,14 +78,18 @@ public class Game extends Canvas implements Runnable{
             // to this and then factor in the current time to give
             // us our final value to wait for
             // remember this is in ms, whereas our lastLoopTime etc. vars are in ns.
-            try{Thread.sleep(
+            try{
+                Thread.sleep(
                     (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000 );
-            }catch (InterruptedException e){
-                System.out.println("Sleep interrupted: " + e);
-                e.printStackTrace();
+            }catch (InterruptedException ie){
+                System.out.println("Sleep interrupted: " + ie);
+                ie.printStackTrace();
+            }catch (IllegalArgumentException iae) {
+                System.out.println("Timeout value negative, skipping sleep");
             }
 
         }
+        stop();
     }
 
     private void tick(double delta){
