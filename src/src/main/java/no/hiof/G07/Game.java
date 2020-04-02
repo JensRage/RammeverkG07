@@ -27,7 +27,6 @@ public class Game extends Canvas implements Runnable{
         name = "new Game";
         window = new Window(name, 800, 600);
         handler = new Handler();
-        this.start();
     }
 
     private synchronized void start(){
@@ -193,6 +192,6 @@ public class Game extends Canvas implements Runnable{
     }
 
     public static void main(String[] args){
-        new Game();
+        new Game().start();
     }
 }
