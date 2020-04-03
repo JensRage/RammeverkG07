@@ -20,8 +20,29 @@ public abstract class GameObject {
         this.y = y;
     }
 
-
+    /**
+     * Method tick()
+     * This method is called from the Handler class,
+     * it exists to update required variables throughout all GameObjects currently in the game.
+     * Object deriving from this class will require to override this method,
+     * this is where logic is decided for what where and which variables will be updated.
+     * @param delta     delta consists of how long the loop update took divided by OPTIMAL_TIME which is a double
+     *                  that describes how long each update should take.
+     *                  This variable is used to update GameObjects variables in a way that keeps the different
+     *                  processing power of different computers in mind.
+     */
     public abstract void tick(double delta);
+
+    /**
+     * Method render()
+     * This method is called from the Handler class,
+     * it is used to update/render the graphics of a GameObject,
+     * Object deriving from this class will require to override this method,
+     * this is where logic is decided for what where and when the graphic is rendered.
+     * @param g         Graphics2D object, which Canvas uses to render graphics in our window.
+     * @see java.awt.Canvas
+     * @see java.awt.Graphics2D
+     */
     public abstract void render(Graphics2D g);
 
     public int getX() {
