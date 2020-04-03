@@ -132,7 +132,7 @@ public class GameConfig {
          * This is the games game loop, it uses System.nanoTime() to compare time since last iteration
          * OPTIMAL_TIME is used to target a FPS set by TARGET_FPS
          * Every iteration tick() is called with parameter delta used to make calculations fair for all hardware
-         * CONT??
+         * In addition it keeps track of the current amount of frames per second.
          * {@inheritDoc}
          */
         @Override
@@ -191,10 +191,24 @@ public class GameConfig {
             stop();
         }
 
+        /**
+         * Method tick()
+         * This method is called from the game loop, once every iteration.
+         * It is used to update the variables of GameObjects currently in the games Handler.
+         * @param delta     delta consists of how long the loop update took divided by OPTIMAL_TIME which is a double
+         *                  that describes how long each update should take.
+         *                  This variable is used to update GameObjects variables in a way that keeps the different
+         *                  processing power of different computers in mind.
+         */
         private void tick(double delta){
             handler.tick(delta);
         }
 
+        /**
+         * Method render()
+         * This method is called from the game loop, once every iteration.
+         * It is used to update/render the graphics of a GameObject based on their current values.
+         */
         private void render(){
             BufferStrategy bs = this.getBufferStrategy();
             if(bs == null){
