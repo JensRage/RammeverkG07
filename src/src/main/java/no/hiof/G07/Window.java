@@ -5,6 +5,13 @@ import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Class Window
+ * This class is designed to be the window of our application.
+ * It uses the JFrame class to get this functionality
+ * @author emilyhbh (Emily Healey)
+ * @version 0.1
+ */
 public class Window {
 
     private int width, height;
@@ -28,6 +35,11 @@ public class Window {
         frame.addKeyListener(new Controls());
     }
 
+    /**
+     * Method openWindow()
+     * Sets basic window settings and proceeds to
+     * launch our application window
+     */
     public void openWindow(){
 
         frame.setTitle(name);
@@ -52,6 +64,10 @@ public class Window {
         }
     }
 
+    /**
+     * Adds the game we want displayed in the window to our frame instance
+     * @param game      The game we want displayed in the window.
+     */
     public void addGameToFrame(GameConfig.Game game){
         frame.add(game);
     }
