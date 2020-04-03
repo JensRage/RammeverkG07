@@ -5,6 +5,13 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is designed to function as the player controlled object.
+ * It will work on its own but can also be derived from.
+ * It holds the players controls and a static list of all player controlled objects.
+ * @author emilyhbh (Emily Healey)
+ * @version 0.1
+ */
 public class Player extends Unit {
 
     private MovementControl movementControl;
@@ -22,6 +29,9 @@ public class Player extends Unit {
         }
     }
 
+    /**
+     * Static list of all player controlled GameObjects.
+     */
     private static List<Player> instances = new ArrayList();
 
     public Player(int x, int y) {
@@ -30,13 +40,20 @@ public class Player extends Unit {
         movementControl = MovementControl.WASD;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void tick(double delta) {
         super.tick(delta);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void render(Graphics2D g) {
+        //TODO:: Render sprite.
         super.render(g);
     }
 
@@ -62,6 +79,13 @@ public class Player extends Unit {
         this.movementControl = movementControl;
     }
 
+    /**
+     * Static method playerMover()
+     * This method loops through all player controlled GameObjects, and calls the move() function from them
+     * Due to the @KeyListen flag, this method is called whenever a key is pressed
+     * @see Controls
+     * @param e     KeyEvent that triggered the function call
+     */
     @KeyListen
     public static void playerMover(KeyEvent e){
         for(Player player : instances)
