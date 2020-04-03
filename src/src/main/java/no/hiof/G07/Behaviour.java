@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
+ * Class Behaviour
+ * SUPER EARLY DEVELOPMENT
  * This class is designed to hold all the different AI states for a GameObject that needs behaviour logic executed
  * @author jenshr (Jens Henrik Rage)
- * @version 0.1
+ * @version 0.0001
  */
 public abstract class Behaviour {
 

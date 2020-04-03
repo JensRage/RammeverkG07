@@ -1,5 +1,11 @@
 package no.hiof.G07;
 
+/**
+ * SUPER EARLY DEVELOPMENT
+ * This class is designed as a tool if you are developing a game that progresses with waves.
+ * @author emilyhbh (Emily Healey)
+ * @version 0.00001
+ */
 public class Wave extends Gametype {
 
     private int round;
