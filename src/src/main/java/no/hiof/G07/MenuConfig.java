@@ -7,6 +7,11 @@ import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * This class is designed to act as a builder for the Menu class
+ * @author emilyhbh (Emily Healey)
+ * @version 0.1
+ */
 public class MenuConfig {
 
     private Menu menu = new Menu();
@@ -127,6 +132,13 @@ public class MenuConfig {
         return menu;
     }
 
+    /**
+     * Class Menu
+     * This Class is designed to hold game menus, for example: File, Edit and View
+     * It utilizes JMenuBar which synergizes well with JFrame.
+     * @author emilyhbh (Emily Healey)
+     * @version 0.1
+     */
     class Menu{
         private ArrayList<JMenuItem> items;
         private JMenuBar mb = new JMenuBar();
