@@ -5,6 +5,12 @@ import java.awt.image.BufferStrategy;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * This class is designed to give users more control over the Game object.
+ * Its designed as a builder, giving strong command over the most important class.
+ * @author emilyhbh (Emily Healey)
+ * @version 0.1
+ */
 public class GameConfig {
 
     private Game game = new Game();
@@ -71,6 +77,15 @@ public class GameConfig {
         return game;
     }
 
+    /**
+     * This class is designed to be the games core.
+     * Its derived from Canvas to allow pixel drawing, and image display (sprites).
+     * It implements Runnable so that it can be run as a thread, this will later allow us to potentially split workloads.
+     * @see java.awt.Canvas
+     * @see java.lang.Runnable
+     * @author jenshr (Jens Rage)
+     * @version 0.1
+     */
     class Game extends Canvas implements Runnable{
 
         private Window window;
@@ -81,6 +96,10 @@ public class GameConfig {
 
         private boolean running;
 
+        /**
+         * Method start()
+         * Called to start the game, opens the window, switches running to true, and calls the thread to start.
+         */
         public synchronized void start(){
             window = getWindow();
             window.addGameToFrame(this);
@@ -93,6 +112,11 @@ public class GameConfig {
             running = true;
         }
 
+        /**
+         * Method stop()
+         * Called to stop the game, switches running to false, and cancels the thread.
+         * @throws java.lang.InterruptedException       CHECH WHEN THIS IS THROWN
+         */
         private synchronized void stop(){
             try{
                 thread.join();
@@ -103,6 +127,14 @@ public class GameConfig {
             }
         }
 
+        /**
+         * Method run()
+         * This is the games game loop, it uses System.nanoTime() to compare time since last iteration
+         * OPTIMAL_TIME is used to target a FPS set by TARGET_FPS
+         * Every iteration tick() is called with parameter delta used to make calculations fair for all hardware
+         * CONT??
+         * {@inheritDoc}
+         */
         @Override
         public void run() {
 
