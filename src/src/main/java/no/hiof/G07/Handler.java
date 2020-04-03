@@ -10,12 +10,29 @@ public class Handler {
         this.objects = new ArrayList<>();
     }
 
+    /**
+     * Method tick()
+     * This method is called from the game loop in the Game class
+     * It is used to update the variables of GameObjects currently this class's objects list.
+     * @param delta     delta consists of how long the loop update took divided by OPTIMAL_TIME which is a double
+     *                  that describes how long each update should take.
+     *                  This variable is used to update GameObjects variables in a way that keeps the different
+     *                  processing power of different computers in mind.
+     */
     public void tick(double delta){
         for (GameObject object : objects) {
             object.tick(delta);
         }
     }
 
+    /**
+     * Method render()
+     * This method is called from the game loop in the Game class
+     * It is used to update/render the graphics of a GameObject
+     * @param g         Graphics2D object, which Canvas uses to render graphics in our window.
+     * @see java.awt.Canvas
+     * @see java.awt.Graphics2D
+     */
     public void render(Graphics2D g){
         for (GameObject object : objects) {
             object.render(g);
