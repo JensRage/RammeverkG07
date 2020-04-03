@@ -21,6 +21,10 @@ public class MenuConfig {
     public MenuConfig() {
     }
 
+    /**
+     *
+     * @return      MenuConfig Instance
+     */
     public MenuConfig hasContinueBtn(){
         menuItems.add(new JMenuItem(new AbstractAction("Continue") {
             public void actionPerformed(ActionEvent e) {
@@ -30,6 +34,10 @@ public class MenuConfig {
         return this;
     }
 
+    /**
+     *
+     * @return      MenuConfig Instance
+     */
     public MenuConfig hasLoadGameBtn(){
         menuItems.add(new JMenuItem(new AbstractAction("Load Game") {
             public void actionPerformed(ActionEvent e) {
@@ -49,6 +57,10 @@ public class MenuConfig {
         return this;
     }
 
+    /**
+     *
+     * @return      MenuConfig Instance
+     */
     public MenuConfig hasSaveGameBtn(){
         menuItems.add(new JMenuItem(new AbstractAction("Save Game") {
             public void actionPerformed(ActionEvent e) {
@@ -58,6 +70,10 @@ public class MenuConfig {
         return this;
     }
 
+    /**
+     *
+     * @return      MenuConfig Instance
+     */
     public MenuConfig hasNewGameBtn(){
         menuItems.add(new JMenuItem(new AbstractAction("New Game") {
             public void actionPerformed(ActionEvent e) {
@@ -143,6 +159,10 @@ public class MenuConfig {
         private ArrayList<JMenuItem> items;
         private JMenuBar mb = new JMenuBar();
 
+        /**
+         *
+         * @return      JMenuBar instance
+         */
         public JMenuBar getMenu(){
 
             JMenu menu = new JMenu("Menu");
