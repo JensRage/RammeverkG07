@@ -20,16 +20,16 @@ public class Controls extends KeyAdapter {
 
     // Finds all methods annotated with @KeyListen and calls them
     Reflections reflections = new Reflections("no.hiof.G07", new MethodAnnotationsScanner());
-    Set<Method> methods = reflections.getMethodsAnnotatedWith(KeyListen.class);
+    Set<Method> keypressedMethods = reflections.getMethodsAnnotatedWith(KeyPress.class);
+    Set<Method> keyreleasedMethods = reflections.getMethodsAnnotatedWith(KeyRelease.class);
 
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     /**
      * This method is called whenever a key is pressed.
-     * It will iterate though all methods flagged with @KeyListen and execute those.
+     * It will iterate though all methods flagged with @KeyPress and execute those.
      * @param e     The KeyEvent that triggered the function.
      * @throws java.lang.IllegalAccessException             If the underlying method is inaccessible.
      * @throws java.lang.reflect.InvocationTargetException  If the called method calls an exception.
@@ -37,7 +37,7 @@ public class Controls extends KeyAdapter {
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        for (Method method : methods) {
+        for (Method method : keypressedMethods) {
             try {
                 method.invoke(null, e);
             } catch (Exception ex) {
@@ -46,9 +46,22 @@ public class Controls extends KeyAdapter {
         }
     }
 
-    //TODO:: Use this as well
+    /**
+     * This method is called whenever a key is released.
+     * It will iterate though all methods flagged with @KeyRelease and execute those.
+     * @param e     The KeyEvent that triggered the function.
+     * @throws java.lang.IllegalAccessException             If the underlying method is inaccessible.
+     * @throws java.lang.reflect.InvocationTargetException  If the called method calls an exception.
+     * {@inheritDoc}
+     */
     @Override
     public void keyReleased(KeyEvent e) {
-
+        for (Method method : keyreleasedMethods) {
+            try {
+                method.invoke(null, e);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }

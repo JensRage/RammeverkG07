@@ -14,10 +14,14 @@ public abstract class GameObject {
     private int y;
     private int velocityX;
     private int velocityY;
+    private Sprite sprite;
+    private boolean isVisible;
 
-    public GameObject(int x, int y) {
+    public GameObject(int x, int y, Sprite sprite) {
         this.x = x;
         this.y = y;
+        this.sprite = sprite;
+        isVisible = true;
     }
 
     /**
@@ -77,6 +81,22 @@ public abstract class GameObject {
         this.velocityY = velocityY;
     }
 
+    public Sprite getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
+    }
+
+    public boolean isVisible() {
+        return isVisible;
+    }
+
+    public void setVisible(boolean visible) {
+        isVisible = visible;
+    }
+
     @Override
     public String toString() {
         return "GameObject{" +
@@ -84,6 +104,7 @@ public abstract class GameObject {
                 ", y=" + y +
                 ", velocityX=" + velocityX +
                 ", velocityY=" + velocityY +
+                ", sprite=" + sprite +
                 '}';
     }
 }

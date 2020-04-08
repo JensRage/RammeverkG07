@@ -29,13 +29,15 @@ public class Handler {
      * Method render()
      * This method is called from the game loop in the Game class
      * It is used to update/render the graphics of a GameObject
+     * GameObjects have a boolean variable "visible", if that is set to false then the object will not be rendered
      * @param g         Graphics2D object, which Canvas uses to render graphics in our window.
      * @see java.awt.Canvas
      * @see java.awt.Graphics2D
      */
     public void render(Graphics2D g){
         for (GameObject object : objects) {
-            object.render(g);
+            if(object.isVisible())
+                object.render(g);
         }
     }
 
