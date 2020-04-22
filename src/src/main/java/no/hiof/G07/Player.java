@@ -48,19 +48,40 @@ public class Player extends Unit {
         super.tick(delta);
     }
 
-    public void move(KeyEvent e) {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void render(Graphics2D g) {
+        //TODO:: Render sprite.
+        super.render(g);
+    }
+
+    // TODO:: change to movespeed variable
+    public void move(KeyEvent e){
         int key = e.getKeyCode();
 
-        if (key == movementControl.up)
-            setVelocityY(getVelocityY() - 1);
+        if(key == movementControl.up)
+            setVelocityY(-1);
         else if (key == movementControl.down)
-            setVelocityY(getVelocityY() + 1);
+            setVelocityY(1);
         else if (key == movementControl.left)
-            setVelocityX(getVelocityX() - 1);
+            setVelocityX(-1);
         else if (key == movementControl.right)
-            setVelocityX(getVelocityX() + 1);
+            setVelocityX(1);
+    }
 
-        System.out.println(getX() + "\t" + getY());
+    public void stop(KeyEvent e){
+        int key = e.getKeyCode();
+
+        if(key == movementControl.up)
+            setVelocityY(0);
+        else if (key == movementControl.down)
+            setVelocityY(0);
+        else if (key == movementControl.left)
+            setVelocityX(0);
+        else if (key == movementControl.right)
+            setVelocityX(0);
     }
 
     public MovementControl getMovementControl() {
@@ -74,28 +95,19 @@ public class Player extends Unit {
     /**
      * Static method playerMover()
      * This method loops through all player controlled GameObjects, and calls the move() function from them
-     * Due to the @KeyPress flag, this method is called whenever a key is pressed
+     * Due to the @KeyPressed flag, this method is called whenever a key is pressed
      * @see Controls
      * @param e     KeyEvent that triggered the function call
      */
-    @KeyPress
+    @KeyPressed
     public static void playerMover(KeyEvent e){
         for(Player player : instances)
             player.move(e);
     }
 
-    /**
-     * Static method playerMoverStopper()
-     * This method loops through all player controlled GameObjects, and sets the velocity of their speed to 0.
-     * Due to the @KeyRelease flag, this method is called whenever a key is released
-     * @see Controls
-     * @param e     KeyEvent that triggered the function call
-     */
-    @KeyRelease
-    public static void playerMoverStopper(KeyEvent e){
-        for(Player player : instances) {
-            player.setVelocityX(0);
-            player.setVelocityY(0);
-        }
+    @KeyReleased
+    public static void playerStopper(KeyEvent e){
+        for (Player player : instances)
+            player.stop(e);
     }
 }

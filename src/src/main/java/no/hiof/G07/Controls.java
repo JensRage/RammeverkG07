@@ -20,8 +20,8 @@ public class Controls extends KeyAdapter {
 
     // Finds all methods annotated with @KeyListen and calls them
     Reflections reflections = new Reflections("no.hiof.G07", new MethodAnnotationsScanner());
-    Set<Method> keypressedMethods = reflections.getMethodsAnnotatedWith(KeyPress.class);
-    Set<Method> keyreleasedMethods = reflections.getMethodsAnnotatedWith(KeyRelease.class);
+    Set<Method> keypressedMethods = reflections.getMethodsAnnotatedWith(KeyPressed.class);
+    Set<Method> keyreleasedMethods = reflections.getMethodsAnnotatedWith(KeyReleased.class);
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -29,7 +29,7 @@ public class Controls extends KeyAdapter {
 
     /**
      * This method is called whenever a key is pressed.
-     * It will iterate though all methods flagged with @KeyPress and execute those.
+     * It will iterate though all methods flagged with @KeyPressed and execute those.
      * @param e     The KeyEvent that triggered the function.
      * @throws java.lang.IllegalAccessException             If the underlying method is inaccessible.
      * @throws java.lang.reflect.InvocationTargetException  If the called method calls an exception.
@@ -48,7 +48,7 @@ public class Controls extends KeyAdapter {
 
     /**
      * This method is called whenever a key is released.
-     * It will iterate though all methods flagged with @KeyRelease and execute those.
+     * It will iterate though all methods flagged with @KeyReleased and execute those.
      * @param e     The KeyEvent that triggered the function.
      * @throws java.lang.IllegalAccessException             If the underlying method is inaccessible.
      * @throws java.lang.reflect.InvocationTargetException  If the called method calls an exception.
