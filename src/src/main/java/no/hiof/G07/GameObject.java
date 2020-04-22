@@ -124,6 +124,16 @@ public abstract class GameObject {
             sprite.setHeight(height);
     }
 
+    public void setSize(int width, int height){
+        this.width = width;
+        this.height = height;
+
+        if(sprite != null){
+            sprite.setWidth(width);
+            sprite.setHeight(height);
+        }
+    }
+
     private final void checkBounds(){
 
         // TODO:: get window size? only checks left wall and top wall
