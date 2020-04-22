@@ -14,6 +14,7 @@ public abstract class GameObject {
     private int y;
     private int velocityX;
     private int velocityY;
+    private int width, height;
     private Sprite sprite;
     private boolean isVisible;
 
@@ -87,6 +88,8 @@ public abstract class GameObject {
 
     public void setSprite(Sprite sprite) {
         this.sprite = sprite;
+        this.sprite.setWidth(width);
+        this.sprite.setHeight(height);
     }
 
     public boolean isVisible() {
@@ -95,6 +98,28 @@ public abstract class GameObject {
 
     public void setVisible(boolean visible) {
         isVisible = visible;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+
+        if(sprite != null)
+            sprite.setWidth(width);
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+
+        if(sprite != null)
+            sprite.setHeight(height);
     }
 
     @Override

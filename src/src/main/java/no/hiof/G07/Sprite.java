@@ -17,18 +17,46 @@ import java.util.ArrayList;
 public class Sprite {
 
     protected Image image;
+    private String filename;
+    private int width = 0, height = 0;
 
     public Sprite(String filename) {
-        loadImage(filename);
+        this.filename = filename;
+        loadImage();
     }
 
-    protected void loadImage(String imageName) {
-        ImageIcon ii = new ImageIcon(imageName);
-        image = ii.getImage();
+    protected void loadImage() {
+
+        // If the sprite has no width or height set than the image shall be loaded in it's full form/size
+        if(width <= 0 && height <= 0){
+            ImageIcon ii = new ImageIcon(filename);
+            image = ii.getImage();
+        }
+        // If Sprite width and height is specified, the image must resize to fill it
+        else {
+            ImageIcon ii = new ImageIcon(filename);
+            Image img = ii.getImage();
+            Image scaledii = img.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);
+            image = new ImageIcon(scaledii).getImage();
+        }
     }
 
     public Image getImage() {
         return image;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+
+        if(height > 0 && width > 0)
+            loadImage();
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+
+        if(width > 0 && height > 0)
+            loadImage();
     }
 
     @Override
