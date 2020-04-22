@@ -1,15 +1,12 @@
 package no.hiof.G07;
 
-import java.io.File;
-
 
 public class Main {
 
     public static void main(String[] args) {
-        // write your code here
 
-        Player p1 = new Player(10,20);
-        Player p2 = new Player(20,10);
+        Player p1 = new Player(10,10, new Sprite("C:\\Users\\EmHaB\\Downloads\\mario.png"));
+        Player p2 = new Player(500,250, new Sprite("C:\\Users\\EmHaB\\Downloads\\mario.png"));
         p2.setMovementControl(Player.MovementControl.ARROWS);
         p1.setMovementControl(Player.MovementControl.WASD);
 
@@ -24,6 +21,8 @@ public class Main {
                             .addKeyListener();
 
         GameConfig.Game game = gc.game();
+        game.getHandler().addObject(p1);
+        game.getHandler().addObject(p2);
 
         game.start();
 

@@ -8,10 +8,10 @@ import java.awt.*;
  * @author jenshr (Jens Rage)
  * @version 0.1
  */
-public class Unit extends GameObject {
+public abstract class Unit extends GameObject {
 
-    public Unit(int x, int y) {
-        super(x, y);
+    public Unit(int x, int y, Sprite sprite) {
+        super(x, y, sprite);
     }
 
     /**
@@ -35,6 +35,6 @@ public class Unit extends GameObject {
      */
     @Override
     public void render(Graphics2D g) {
-
+        g.drawImage(this.getSprite().getImage(), this.getX(), this.getY(), null);
     }
 }

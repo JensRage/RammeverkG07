@@ -8,8 +8,8 @@ public class Enemy extends Unit {
 
     private Behaviour behaviour;
 
-    public Enemy(int x, int y) {
-        super(x, y);
+    public Enemy(int x, int y, Sprite sprite) {
+        super(x, y, sprite);
     }
 
 

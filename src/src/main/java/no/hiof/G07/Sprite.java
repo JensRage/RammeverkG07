@@ -1,6 +1,10 @@
 package no.hiof.G07;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
+
+// source: http://zetcode.com/tutorials/javagamestutorial/movingsprites/
 
 /**
  * Class Sprite
@@ -12,19 +16,24 @@ import java.util.ArrayList;
  */
 public class Sprite {
 
-    // TODO:: Usikker på variabel typen for images, arraylist string for nå som placeholder
-    private ArrayList<String> images;
-    private ImageLoader imgLoader;
+    protected Image image;
 
-    public Sprite(ImageLoader imgLoader) {
-        this.imgLoader = imgLoader;
+    public Sprite(String filename) {
+        loadImage(filename);
     }
 
-    private void uploadSprite(){
-
+    protected void loadImage(String imageName) {
+        ImageIcon ii = new ImageIcon(imageName);
+        image = ii.getImage();
     }
 
-    public ArrayList<String> getImages() {
-        return images;
+    public Image getImage() {
+        return image;
+    }
+
+    @Override
+    public String toString() {
+        return "Sprite{" + image +
+                '}';
     }
 }
