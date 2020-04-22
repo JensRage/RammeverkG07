@@ -56,6 +56,7 @@ public abstract class GameObject {
 
     public void setX(int x) {
         this.x = x;
+        checkBounds();
     }
 
     public int getY() {
@@ -64,6 +65,7 @@ public abstract class GameObject {
 
     public void setY(int y) {
         this.y = y;
+        checkBounds();
     }
 
     public int getVelocityX() {
@@ -120,6 +122,15 @@ public abstract class GameObject {
 
         if(sprite != null)
             sprite.setHeight(height);
+    }
+
+    private final void checkBounds(){
+
+        // TODO:: get window size? only checks left wall and top wall
+        if(x + width < 0 || y + height < 0)
+            isVisible = false;
+        else
+            isVisible = true;
     }
 
     @Override
