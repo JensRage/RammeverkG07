@@ -110,7 +110,11 @@ public class GameConfig {
         public synchronized void start(){
             window = getWindow();
             window.addGameToFrame(this);
-            window.addComponent(game.getStartMenu().getMenu());
+
+            if (game.getStartMenu() != null) {
+                window.addComponent(game.getStartMenu().getMenu());
+            }
+
             window.openWindow();
 
             thread = new Thread(this);
