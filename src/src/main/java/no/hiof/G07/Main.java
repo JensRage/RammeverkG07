@@ -11,6 +11,7 @@ public class Main {
         Player p1 = new Player(10,20);
         Player p2 = new Player(20,10);
         p2.setMovementControl(Player.MovementControl.ARROWS);
+        p1.setMovementControl(Player.MovementControl.WASD);
 
         MenuConfig mc = new MenuConfig()
                 .hasLoadGameBtn()
@@ -19,7 +20,8 @@ public class Main {
 
         GameConfig gc = new GameConfig()
                             .addPlayer(p1).addPlayer(p2)
-                            .setStartMenu(mc.menu());
+                            .setStartMenu(mc.menu())
+                            .addKeyListener();
 
         GameConfig.Game game = gc.game();
 

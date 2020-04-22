@@ -1,6 +1,7 @@
 package no.hiof.G07;
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
 import java.awt.image.BufferStrategy;
 import java.io.File;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class GameConfig {
 
     public GameConfig addPlayer(Player player){
         players.add(player);
+        game.handler.addObject(player);
         return this;
     }
 
@@ -40,6 +42,11 @@ public class GameConfig {
 
     public GameConfig setWindow(Window window){
         this.window = window;
+        return this;
+    }
+
+    public GameConfig addKeyListener(){
+        game.addKeyListener(new Controls());
         return this;
     }
 
