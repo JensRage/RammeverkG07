@@ -19,8 +19,9 @@ import java.util.Set;
 public class Controls extends KeyAdapter {
 
     // Finds all methods annotated with @KeyListen and calls them
-    Reflections reflections = new Reflections("no.hiof.G07", new MethodAnnotationsScanner());
-    Set<Method> methods = reflections.getMethodsAnnotatedWith(KeyListen.class);
+    private Reflections reflections = new Reflections("no.hiof.G07", new MethodAnnotationsScanner());
+    private Set<Method> pressMethods = reflections.getMethodsAnnotatedWith(KeyPressed.class);
+    private Set<Method> releaseMethods = reflections.getMethodsAnnotatedWith(KeyReleased.class);
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -37,7 +38,7 @@ public class Controls extends KeyAdapter {
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        for (Method method : methods) {
+        for (Method method : pressMethods) {
             try {
                 method.invoke(null, e);
             } catch (Exception ex) {
@@ -49,6 +50,13 @@ public class Controls extends KeyAdapter {
     //TODO:: Use this as well
     @Override
     public void keyReleased(KeyEvent e) {
-
+        System.out.println(releaseMethods.size());
+        for (Method method : releaseMethods) {
+            try {
+                method.invoke(null, e);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }
