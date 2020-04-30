@@ -1,9 +1,7 @@
 package no.hiof.G07;
 
 import java.awt.*;
-import java.awt.event.KeyAdapter;
 import java.awt.image.BufferStrategy;
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -20,13 +18,28 @@ public class GameConfig {
     private Gametype type = new Linear();
     private ArrayList<Player> players = new ArrayList<>();
     private MenuConfig.Menu startMenu, pauseMenu;
+    private static Handler handler =  new Handler();
+    private static boolean isPaused = true;
 
     public GameConfig() {
+        addKeyListener();
+    }
+
+    public static String getSaveContent(){
+        return "save game: " + handler;
+    }
+
+    public static void Pause(){
+        isPaused = true;
+    }
+
+    public static void Continue(){
+        isPaused = false;
     }
 
     public GameConfig addPlayer(Player player){
         players.add(player);
-        game.handler.addObject(player);
+        handler.addObject(player);
         return this;
     }
 
@@ -58,7 +71,6 @@ public class GameConfig {
     public String getNamee() {
         return name;
     }
-
 
     public Gametype getTypee() {
         return type;
@@ -96,11 +108,9 @@ public class GameConfig {
     class Game extends Canvas implements Runnable{
 
         private Window window;
-        private Handler handler =  new Handler();
         private Thread thread;
         private int fps;
         private final int TARGET_FPS = 60;
-
         private boolean running;
 
         /**
@@ -108,6 +118,7 @@ public class GameConfig {
          * Called to start the game, opens the window, switches running to true, and calls the thread to start.
          */
         public synchronized void start(){
+
             window = getWindow();
             window.addGameToFrame(this);
 
@@ -121,6 +132,7 @@ public class GameConfig {
             //Calls run();
             thread.start();
             running = true;
+            isPaused = false;
         }
 
         /**
@@ -128,10 +140,12 @@ public class GameConfig {
          * Called to stop the game, switches running to false, and cancels the thread.
          * @throws java.lang.InterruptedException       CHECH WHEN THIS IS THROWN
          */
-        private synchronized void stop(){
+        public synchronized void stop(){
+
             try{
                 thread.join();
                 running = false;
+                isPaused = true;
             }catch (InterruptedException ie) {
                 System.out.println("Interrupted:" + ie);
                 ie.printStackTrace();
@@ -156,46 +170,52 @@ public class GameConfig {
 
             // keep looping round til the game ends
             while ( running ){
-                // work out how long its been since the last update, this
-                // will be used to calculate how far the entities should
-                // move this loop
-                long now = System.nanoTime();
-                long updateLength = now - lastLoopTime;
-                lastLoopTime = now;
-                double delta = updateLength / ((double)OPTIMAL_TIME);
 
-                // update the frame counter
-                lastFpsTime += updateLength;
-                fps++;
+                if( !isPaused ) {
 
-                // update our FPS counter if a second has passed since
-                // we last recorded
-                if (lastFpsTime >= 1000000000)
-                {
-                    System.out.println("(FPS: "+fps+")");
-                    lastFpsTime = 0;
-                    fps = 0;
+                    // work out how long its been since the last update, this
+                    // will be used to calculate how far the entities should
+                    // move this loop
+                    long now = System.nanoTime();
+                    long updateLength = now - lastLoopTime;
+                    lastLoopTime = now;
+                    double delta = updateLength / ((double) OPTIMAL_TIME);
+
+                    // update the frame counter
+                    lastFpsTime += updateLength;
+                    fps++;
+
+                    // update our FPS counter if a second has passed since
+                    // we last recorded
+                    if (lastFpsTime >= 1000000000) {
+                        System.out.println("(FPS: " + fps + ")");
+                        lastFpsTime = 0;
+                        fps = 0;
+                    }
+
+                    // update the game logic
+                    tick(delta);
                 }
-
-                // update the game logic
-                tick(delta);
 
                 // draw everyting
                 render();
 
-                // we want each frame to take 10 milliseconds, to do this
-                // we've recorded when we started the frame. We add 10 milliseconds
-                // to this and then factor in the current time to give
-                // us our final value to wait for
-                // remember this is in ms, whereas our lastLoopTime etc. vars are in ns.
-                try{
-                    Thread.sleep(
-                            (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000 );
-                }catch (InterruptedException ie){
-                    System.out.println("Sleep interrupted: " + ie);
-                    ie.printStackTrace();
-                }catch (IllegalArgumentException iae) {
-                    System.out.println("Timeout value negative, skipping sleep");
+                if (!isPaused){
+
+                    // we want each frame to take 10 milliseconds, to do this
+                    // we've recorded when we started the frame. We add 10 milliseconds
+                    // to this and then factor in the current time to give
+                    // us our final value to wait for
+                    // remember this is in ms, whereas our lastLoopTime etc. vars are in ns.
+                    try{
+                        Thread.sleep(
+                                (lastLoopTime-System.nanoTime() + OPTIMAL_TIME)/1000000 );
+                    }catch (InterruptedException ie){
+                        System.out.println("Sleep interrupted: " + ie);
+                        ie.printStackTrace();
+                    }catch (IllegalArgumentException iae) {
+                        System.out.println("Timeout value negative, skipping sleep");
+                    }
                 }
 
             }

@@ -7,6 +7,9 @@ import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.ArrayList;
 
+import static no.hiof.G07.GameConfig.*;
+
+
 /**
  * This class is designed to act as a builder for the Menu class
  * @author emilyhbh (Emily Healey)
@@ -57,6 +60,16 @@ public class MenuConfig {
         return this;
     }
 
+    // TODO:: TEMPORARY
+    public MenuConfig hasPauseBtn(){
+        menuItems.add(new JMenuItem(new AbstractAction("Pause") {
+            public void actionPerformed(ActionEvent e) {
+                pauseGame();
+            }
+        }));
+        return this;
+    }
+
     /**
      * Adds a "Save Game" button to the menu that calls the saveGame() method when clicked.
      *
@@ -92,7 +105,8 @@ public class MenuConfig {
     }
 
     private void continueGame(){
-        System.out.println("Continue called");
+        System.out.println("Continuing");
+        Continue();
     }
 
     private void loadGame(File saveFile){
@@ -132,12 +146,17 @@ public class MenuConfig {
         BufferedWriter out = null;
         try {
             out = new BufferedWriter(new FileWriter(file));
-            out.write("Temporary shit");    // TODO:: write to file here
+            out.write(getSaveContent());
             out.close();
             System.out.println("Saved Game Successfully");
         } catch (IOException e) {
             System.out.println("Could not save game");
         }
+    }
+
+    private void pauseGame(){
+        System.out.println("Paused");
+        Pause();
     }
 
     private void newGame(){
