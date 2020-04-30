@@ -15,19 +15,6 @@ import java.util.List;
 public class Player extends Unit {
 
     private MovementControl movementControl;
-    enum MovementControl {
-        WASD(87,83,65,68),
-        ARROWS(38,40,37,39);
-
-        public int up, down, left, right;
-
-        MovementControl(int up, int down, int left, int right) {
-            this.up = up;
-            this.down = down;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     /**
      * Static list of all player controlled GameObjects.
@@ -37,7 +24,7 @@ public class Player extends Unit {
     public Player(int x, int y, Sprite sprite) {
         super(x, y, sprite);
         instances.add(this);
-        movementControl = MovementControl.WASD;
+        movementControl = new MovementControl.Wasd();
     }
 
     /**
