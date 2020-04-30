@@ -1,28 +1,33 @@
 package no.hiof.G07;
 
-
 public class Main {
 
     public static void main(String[] args) {
 
-        Player p1 = new Player(10,10, new Sprite("C:\\Users\\EmHaB\\Downloads\\mario.png"));
-        Player p2 = new Player(500,250, new Sprite("C:\\Users\\EmHaB\\Downloads\\mario.png"));
-        p2.setMovementControl(Player.MovementControl.ARROWS);
-        p1.setMovementControl(Player.MovementControl.WASD);
+        // Write own code here
 
-        MenuConfig mc = new MenuConfig()
+        Player p1 = new Player(0,0, new Sprite("C:\\Users\\EmHaB\\IdeaProjects\\Rammeverk\\luigi.jpg"));
+
+        // Assign keypress -> trigger function, works for all GameObjects
+        p1.addKeyCommands(81, () -> System.out.println("q pressed"));  // key q
+
+        Player p2 = new Player(200,200,new Sprite("C:\\Users\\EmHaB\\IdeaProjects\\Rammeverk\\mario.png"));
+        p2.setMovementControl(new MovementControl.Arrows());
+
+        MenuConfig.Menu startMenu = new MenuConfig()
                 .hasLoadGameBtn()
+                .hasNewGameBtn()
                 .hasSaveGameBtn()
-                .hasNewGameBtn();
+                .hasContinueBtn()
+                .hasPauseBtn()
+                .menu();
 
-        GameConfig gc = new GameConfig()
-                            .addPlayer(p1).addPlayer(p2)
-                            .setStartMenu(mc.menu())
-                            .addKeyListener();
+        GameConfig.Game game = new GameConfig()
+                .setStartMenu(startMenu)
+                .addPlayer(p1)
+                .addPlayer(p2)
+                .game();
 
-        GameConfig.Game game = gc.game();
-        game.getHandler().addObject(p1);
-        game.getHandler().addObject(p2);
 
         game.start();
 

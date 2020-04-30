@@ -1,6 +1,10 @@
 package no.hiof.G07;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * This class is designed to be the base for all future GameObjects.
@@ -10,6 +14,9 @@ import java.awt.*;
  * @version 0.1
  */
 public abstract class GameObject {
+
+    private static List<GameObject> gameObjInstances = new ArrayList();
+
     private int x;
     private int y;
     private int velocityX;
@@ -17,12 +24,19 @@ public abstract class GameObject {
     private int width, height;
     private Sprite sprite;
     private boolean isVisible;
+    private HashMap<Integer, Runnable> keyCommands;
 
     public GameObject(int x, int y, Sprite sprite) {
         this.x = x;
         this.y = y;
         this.sprite = sprite;
         isVisible = true;
+        keyCommands = new HashMap<>();
+        gameObjInstances.add(this);
+    }
+
+    public void addKeyCommands(Integer keyCode, Runnable keyCommand) {
+        keyCommands.put(keyCode, keyCommand);
     }
 
     /**
@@ -141,6 +155,17 @@ public abstract class GameObject {
             isVisible = false;
         else
             isVisible = true;
+    }
+
+    @KeyPressed
+    public static void interact(KeyEvent e){
+
+        Integer keyCode = e.getKeyCode();
+
+        for(GameObject go : gameObjInstances){
+            if (go.keyCommands.containsKey(keyCode))
+                go.keyCommands.get(keyCode).run();
+        }
     }
 
     @Override
