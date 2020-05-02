@@ -12,7 +12,7 @@ import java.util.List;
  * @author emilyhbh (Emily Healey)
  * @version 0.1
  */
-public class Player extends Unit {
+public class Player extends Unit{
 
     private MovementControl movementControl;
 
@@ -96,5 +96,20 @@ public class Player extends Unit {
     public static void playerStopper(KeyEvent e){
         for (Player player : instances)
             player.stop(e);
+    }
+
+    @Override
+    public void onCollisionEnter(GameObject collider) {
+        System.out.println("onCollisionEnter Called");
+    }
+
+    @Override
+    public void onCollisionStay(GameObject collider) {
+        System.out.println("onCollisionStay Called");
+    }
+
+    @Override
+    public void onCollisionLeave(GameObject collider) {
+        System.out.println("onCollisionLeave Called");
     }
 }

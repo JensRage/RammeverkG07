@@ -12,5 +12,18 @@ public class Enemy extends Unit {
         super(x, y, sprite);
     }
 
+    @Override
+    public void onCollisionEnter(GameObject collider) {
 
+    }
+
+    @Override
+    public void onCollisionStay(GameObject collider) {
+
+    }
+
+    @Override
+    public void onCollisionLeave(GameObject collider) {
+
+    }
 }

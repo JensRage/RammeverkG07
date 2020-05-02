@@ -8,7 +8,7 @@ import java.awt.*;
  * @author jenshr (Jens Rage)
  * @version 0.1
  */
-public abstract class Unit extends GameObject {
+public abstract class Unit extends GameObject implements ICollidable{
 
     public Unit(int x, int y, Sprite sprite) {
         super(x, y, sprite);
@@ -37,4 +37,7 @@ public abstract class Unit extends GameObject {
     public void render(Graphics2D g) {
         g.drawImage(this.getSprite().getImage(), this.getX(), this.getY(), null);
     }
+
+
+
 }
