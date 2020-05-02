@@ -26,7 +26,12 @@ public class GameConfig {
     }
 
     public static String getSaveContent(){
-        return "save game: " + handler;
+        return handler.toString();
+    }
+
+    public static void loadSaveContent(String saveContent) {
+
+        // TODO:: read json serialized handler instance
     }
 
     public static void Pause(){
