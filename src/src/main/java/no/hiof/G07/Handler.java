@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 public class Handler {
     private ArrayList<GameObject> objects;
+    private CollisionHandler collisionHandler;
 
     public Handler() {
         this.objects = new ArrayList<>();
+        this.collisionHandler = new CollisionHandler();
     }
 
     /**
@@ -22,7 +24,11 @@ public class Handler {
     public void tick(double delta){
         for (GameObject object : objects) {
             object.tick(delta);
+            if (object instanceof ICollidable){
+                collisionHandler.addCollidable(object);
+            }
         }
+        collisionHandler.tick();
     }
 
     /**
