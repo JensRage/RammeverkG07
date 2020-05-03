@@ -19,21 +19,30 @@ public class CollisionHandler {
             for (GameObject collider : collidableObjects){
                 if (collidee.equals(collider)) continue;
 
-                if (checkCollision(collidee, collider)){
-                    CollisionPair collisionPair = new CollisionPair(collidee, collider);
-                    ICollidable collidable = (ICollidable)collidee;
-                    if (lastTicsCollisionPairs.contains(collisionPair))
-                        collidable.onCollisionStay(collider);
-                    else
-                        collidable.onCollisionEnter(collider);
 
+                if (checkCollision(collidee, collider)){
+
+                    CollisionPair collisionPair = new CollisionPair(collidee, collider);
 
                     collisionPairs.add(collisionPair);
-                    lastTicsCollisionPairs.retainAll(collisionPairs);
+
+                    if (lastTicsCollisionPairs.contains(collisionPair))
+
+                        collisionPair.callOnCollisionStay();
+                    else
+                        collisionPair.callOnCollisionEnter();
                 }
             }
         }
 
+        CollisionSet collisionsLost = lastTicsCollisionPairs.findDifference(collisionPairs);
+        for (CollisionPair pair : collisionsLost){
+            pair.callOnCollisionLeave();
+        }
+        wipeLastTicksCollisionPairs();
+        lastTicsCollisionPairs.addAll(collisionPairs);
+        //System.out.println(lastTicsCollisionPairs);
+        wipeCollisionPairs();
         wipeCollidableObjects();
     }
 
@@ -55,5 +64,13 @@ public class CollisionHandler {
 
     private void wipeCollidableObjects(){
         collidableObjects.clear();
+    }
+
+    private void wipeCollisionPairs(){
+        collisionPairs.clear();
+    }
+
+    private void wipeLastTicksCollisionPairs(){
+        lastTicsCollisionPairs.clear();
     }
 }

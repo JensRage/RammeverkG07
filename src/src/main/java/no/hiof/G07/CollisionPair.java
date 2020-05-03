@@ -14,4 +14,19 @@ public class CollisionPair {
         CollisionPair collisionPair = (CollisionPair)obj;
         return this.collidee.equals(collisionPair.collidee) && this.collider.equals(collisionPair.collider);
     }
+
+    public void callOnCollisionLeave(){
+        ICollidable collidable = (ICollidable)collidee;
+        collidable.onCollisionLeave(collider);
+    }
+
+    public void callOnCollisionEnter(){
+        ICollidable collidable = (ICollidable)collidee;
+        collidable.onCollisionEnter(collider);
+    }
+
+    public void callOnCollisionStay(){
+        ICollidable collidable = (ICollidable)collidee;
+        collidable.onCollisionStay(collider);
+    }
 }
