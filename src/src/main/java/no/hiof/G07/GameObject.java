@@ -1,6 +1,7 @@
 package no.hiof.G07;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -17,6 +18,10 @@ import java.util.List;
  * @author jenshr (Jens Rage)
  * @version 0.1
  */
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.CLASS,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
 public abstract class GameObject {
 
     private static List<GameObject> gameObjInstances = new ArrayList();
@@ -26,11 +31,11 @@ public abstract class GameObject {
     private int velocityX;
     private int velocityY;
     private int width, height;
-
-    @JsonIgnore
     private Sprite sprite;
     private boolean isVisible;
     private HashMap<Integer, Runnable> keyCommands;
+
+    public GameObject(){}
 
     public GameObject(int x, int y, Sprite sprite) {
         this.x = x;

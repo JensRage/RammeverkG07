@@ -1,5 +1,7 @@
 package no.hiof.G07;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,9 +18,12 @@ import java.util.ArrayList;
  */
 public class Sprite {
 
+    @JsonIgnore
     protected Image image;
     private String filename;
     private int width = 0, height = 0;
+
+    public Sprite(){}
 
     public Sprite(String filename) {
         this.filename = filename;
@@ -57,6 +62,18 @@ public class Sprite {
 
         if(width > 0 && height > 0)
             loadImage();
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     @Override

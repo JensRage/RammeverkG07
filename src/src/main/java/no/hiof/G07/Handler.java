@@ -1,6 +1,5 @@
 package no.hiof.G07;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -66,9 +65,7 @@ public class Handler {
         String result = null;
         try {
             ObjectMapper om = new ObjectMapper();
-            om.enableDefaultTyping(ObjectMapper.DefaultTyping.OBJECT_AND_NON_CONCRETE, JsonTypeInfo.As.PROPERTY);
             om.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-            // om.writerWithDefaultPrettyPrinter()  FOR pretty print of JSON, better without tho bcuz of compression
             result = om.writeValueAsString(this);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
