@@ -14,6 +14,10 @@ public abstract class Unit extends GameObject implements ICollidable{
         super(x, y, sprite);
     }
 
+    public Unit(int x, int y, int width, int height, Sprite sprite) {
+        super(x, y, width, height, sprite);
+    }
+
     /**
      * This implementation of tick allows for steady and smooth movement,
      * by setting XY coordinates to: it's position + its velocity at the given axis.

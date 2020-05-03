@@ -30,9 +30,19 @@ public abstract class GameObject {
         this.x = x;
         this.y = y;
         this.sprite = sprite;
+        this.height = this.sprite.image.getHeight(null);
+        this.width = this.sprite.image.getWidth(null);
         isVisible = true;
         keyCommands = new HashMap<>();
         gameObjInstances.add(this);
+    }
+
+    public GameObject(int x, int y, int width, int height, Sprite sprite) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.sprite = sprite;
     }
 
     public void addKeyCommands(Integer keyCode, Runnable keyCommand) {
@@ -138,6 +148,7 @@ public abstract class GameObject {
             sprite.setHeight(height);
     }
 
+    // TODO: Can i change this in runtime?
     public void setSize(int width, int height){
         this.width = width;
         this.height = height;
