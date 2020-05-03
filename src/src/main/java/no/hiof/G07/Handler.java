@@ -1,5 +1,9 @@
 package no.hiof.G07;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -51,6 +55,10 @@ public class Handler {
         objects.add(object);
     }
 
+    public ArrayList<GameObject> getObjects() {
+        return objects;
+    }
+
     //Might remove return. But it might be good for debugging
     public GameObject removeObject(GameObject object) {
         objects.remove(object);
@@ -59,10 +67,17 @@ public class Handler {
 
     @Override
     public String toString() {
-        StringBuilder returnString = new StringBuilder();
-        for (int i = 0; i < objects.size(); i++) {
-            returnString.append("#").append(i).append(":").append(objects.get(i).toString());
+
+        String result = null;
+        try {
+            ObjectMapper om = new ObjectMapper();
+            om.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+            result = om.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            result = null;  // TODO: better error handling
         }
-        return returnString.toString();
+
+        return result;
     }
 }

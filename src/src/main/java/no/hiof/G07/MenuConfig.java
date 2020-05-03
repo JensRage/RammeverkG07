@@ -116,15 +116,19 @@ public class MenuConfig {
             return;
         }
 
-        BufferedReader objReader = null;
+        BufferedReader objReader;
         try {
             String strCurrentLine;
             objReader = new BufferedReader(new FileReader(saveFile));
 
+            StringBuilder savefileContent = new StringBuilder();
+
             while ((strCurrentLine = objReader.readLine()) != null)
-                System.out.println(strCurrentLine); // TODO:: her leser hver linje
+                savefileContent.append(strCurrentLine);
 
             objReader.close();
+
+            loadSaveContent(savefileContent.toString());
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -143,7 +147,7 @@ public class MenuConfig {
             file = new File("save_file_" + saveNr + ".txt");
         }
 
-        BufferedWriter out = null;
+        BufferedWriter out;
         try {
             out = new BufferedWriter(new FileWriter(file));
             out.write(getSaveContent());

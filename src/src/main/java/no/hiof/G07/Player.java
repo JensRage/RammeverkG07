@@ -1,5 +1,7 @@
 package no.hiof.G07;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -20,6 +22,10 @@ public class Player extends Unit{
      * Static list of all player controlled GameObjects.
      */
     private static List<Player> instances = new ArrayList();
+
+    public Player(){
+        instances.add(this);
+    }
 
     public Player(int x, int y, Sprite sprite) {
         super(x, y, sprite);
@@ -46,7 +52,6 @@ public class Player extends Unit{
      */
     @Override
     public void render(Graphics2D g) {
-        //TODO:: Render sprite.
         super.render(g);
     }
 

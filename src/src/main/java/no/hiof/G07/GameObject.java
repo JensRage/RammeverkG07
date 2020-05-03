@@ -1,5 +1,10 @@
 package no.hiof.G07;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -13,6 +18,10 @@ import java.util.List;
  * @author jenshr (Jens Rage)
  * @version 0.1
  */
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.CLASS,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
 public abstract class GameObject {
 
     private static List<GameObject> gameObjInstances = new ArrayList();
@@ -25,6 +34,8 @@ public abstract class GameObject {
     private Sprite sprite;
     private boolean isVisible;
     private HashMap<Integer, Runnable> keyCommands;
+
+    public GameObject(){}
 
     public GameObject(int x, int y, Sprite sprite) {
         this.x = x;
@@ -159,13 +170,10 @@ public abstract class GameObject {
         }
     }
 
-    private final void checkBounds(){
+    private void checkBounds(){
 
         // TODO:: get window size? only checks left wall and top wall
-        if(x + width < 0 || y + height < 0)
-            isVisible = false;
-        else
-            isVisible = true;
+        isVisible = x + width >= 0 && y + height >= 0;
     }
 
     @KeyPressed
@@ -181,12 +189,15 @@ public abstract class GameObject {
 
     @Override
     public String toString() {
-        return "GameObject{" +
-                "x=" + x +
-                ", y=" + y +
-                ", velocityX=" + velocityX +
-                ", velocityY=" + velocityY +
-                ", sprite=" + sprite +
-                '}';
+
+        String result;
+        try {
+            result = new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            result = null;  // TODO: better error handling
+        }
+
+        return result;
     }
 }

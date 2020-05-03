@@ -4,6 +4,8 @@ public class MovementControl {
 
     public int up, down, left, right;
 
+    public MovementControl(){}
+
     public MovementControl(int up, int down, int left, int right) {
         this.up = up;
         this.down = down;

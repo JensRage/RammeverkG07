@@ -1,7 +1,10 @@
 package no.hiof.G07;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +29,18 @@ public class GameConfig {
     }
 
     public static String getSaveContent(){
-        return "save game: " + handler;
+        return handler.toString();
+    }
+
+    public static void loadSaveContent(String saveContent) {
+
+        // Reads JSON serialized handler instance
+        ObjectMapper om = new ObjectMapper();
+        try {
+            handler = om.readValue(saveContent, Handler.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void Pause(){
