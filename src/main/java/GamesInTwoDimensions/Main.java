@@ -1,4 +1,4 @@
-package no.hiof.G07;
+package GamesInTwoDimensions;
 
 public class Main {
 
@@ -6,13 +6,14 @@ public class Main {
 
         // Write own code here
 
-        Player p1 = new Player(0,0, new Sprite("C:\\Users\\EmHaB\\IdeaProjects\\Rammeverk\\luigi.jpg"));
+        Player p1 = new Player();
 
         // Assign keypress -> trigger function, works for all GameObjects
         p1.addKeyCommands(81, () -> System.out.println("q pressed"));  // key q
 
-        Player p2 = new Player(200,200,new Sprite("C:\\Users\\EmHaB\\IdeaProjects\\Rammeverk\\mario.png"));
+        Player p2 = new Player();
         p2.setMovementControl(new MovementControl.Arrows());
+        p2.setPosition(200,200);
 
         MenuConfig.Menu startMenu = new MenuConfig()
                 .hasLoadGameBtn()

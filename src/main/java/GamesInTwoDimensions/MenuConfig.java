@@ -1,4 +1,4 @@
-package no.hiof.G07;
+package GamesInTwoDimensions;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.ArrayList;
 
-import static no.hiof.G07.GameConfig.*;
+import static GamesInTwoDimensions.GameConfig.*;
 
 
 /**

@@ -1,4 +1,4 @@
-package no.hiof.G07;
+package GamesInTwoDimensions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

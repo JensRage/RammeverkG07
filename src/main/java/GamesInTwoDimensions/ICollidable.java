@@ -1,4 +1,4 @@
-package no.hiof.G07;
+package GamesInTwoDimensions;
 
 public interface ICollidable {
     void onCollisionEnter(GameObject collider);

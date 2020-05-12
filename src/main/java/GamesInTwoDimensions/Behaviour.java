@@ -1,6 +1,5 @@
-package no.hiof.G07;
+package GamesInTwoDimensions;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**

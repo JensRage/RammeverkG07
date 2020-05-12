@@ -1,6 +1,4 @@
-package no.hiof.G07;
-
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+package GamesInTwoDimensions;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -24,6 +22,7 @@ public class Player extends Unit{
     private static List<Player> instances = new ArrayList();
 
     public Player(){
+        movementControl = new MovementControl.Wasd();   // Default controls are WASD
         instances.add(this);
     }
 

@@ -1,4 +1,4 @@
-package no.hiof.G07;
+package GamesInTwoDimensions;
 
 /**
  * This class is designed to be derived from by non friendly Units

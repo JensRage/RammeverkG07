@@ -1,4 +1,4 @@
-package no.hiof.G07;
+package GamesInTwoDimensions;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -36,7 +36,14 @@ public abstract class GameObject {
     private boolean isVisible;
     private HashMap<Integer, Runnable> keyCommands;
 
-    public GameObject(){}
+    public GameObject(){
+        // default values
+        x = 0;
+        y = 0;
+        isVisible = true;
+        keyCommands = new HashMap<>();
+        gameObjInstances.add(this);
+    }
 
     public GameObject(int x, int y, Sprite sprite) {
         this.x = x;
@@ -160,7 +167,6 @@ public abstract class GameObject {
             sprite.setHeight(height);
     }
 
-    // TODO: Can i change this in runtime?
     public void setSize(int width, int height){
         this.width = width;
         this.height = height;
@@ -169,6 +175,11 @@ public abstract class GameObject {
             sprite.setWidth(width);
             sprite.setHeight(height);
         }
+    }
+
+    public void setPosition(int x, int y){
+        this.x = x;
+        this.y = y;
     }
 
     private void checkBounds(){

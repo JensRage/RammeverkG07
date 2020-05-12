@@ -1,8 +1,7 @@
-package no.hiof.G07;
+package GamesInTwoDimensions;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Set;
 
 //PROBLEM: Struggling with testing this atm
 //PROBLEM: Demanding nested loops

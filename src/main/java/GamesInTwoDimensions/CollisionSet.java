@@ -1,9 +1,7 @@
-package no.hiof.G07;
+package GamesInTwoDimensions;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
 
 public class CollisionSet extends ArrayList<CollisionPair>{
     @Override

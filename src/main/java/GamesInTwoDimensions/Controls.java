@@ -1,4 +1,4 @@
-package no.hiof.G07;
+package GamesInTwoDimensions;
 
 import org.reflections.Reflections;
 import org.reflections.scanners.MethodAnnotationsScanner;
@@ -19,7 +19,7 @@ import java.util.Set;
 public class Controls extends KeyAdapter {
 
     // Finds all methods annotated with @KeyListen and calls them
-    Reflections reflections = new Reflections("no.hiof.G07", new MethodAnnotationsScanner());
+    Reflections reflections = new Reflections("GamesInTwoDimensions", new MethodAnnotationsScanner());
     Set<Method> keypressedMethods = reflections.getMethodsAnnotatedWith(KeyPressed.class);
     Set<Method> keyreleasedMethods = reflections.getMethodsAnnotatedWith(KeyReleased.class);
 
