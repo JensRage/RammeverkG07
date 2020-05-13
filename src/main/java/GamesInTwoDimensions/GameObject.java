@@ -32,6 +32,7 @@ public abstract class GameObject {
     private int velocityX;
     private int velocityY;
     private int width, height;
+    private int movementSpeed;
     private Sprite sprite;
     private boolean isVisible;
     private HashMap<Integer, Runnable> keyCommands;
@@ -165,6 +166,14 @@ public abstract class GameObject {
 
         if(sprite != null)
             sprite.setHeight(height);
+    }
+
+    public int getMovementSpeed() {
+        return movementSpeed;
+    }
+
+    public void setMovementSpeed(int movementSpeed) {
+        this.movementSpeed = movementSpeed;
     }
 
     public void setSize(int width, int height){

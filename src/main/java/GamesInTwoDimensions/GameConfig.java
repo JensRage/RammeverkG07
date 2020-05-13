@@ -134,7 +134,7 @@ public class GameConfig {
         private Window window;
         private Thread thread;
         private int fps;
-        private final int TARGET_FPS = 60;
+        private int TARGET_FPS = 60;
         private boolean running;
 
         /**
@@ -282,6 +282,14 @@ public class GameConfig {
 
             g.dispose();
             bs.show();
+        }
+
+        public int getTARGET_FPS() {
+            return TARGET_FPS;
+        }
+
+        public void setTARGET_FPS(int TARGET_FPS) {
+            this.TARGET_FPS = TARGET_FPS;
         }
 
         public int getFps() {
