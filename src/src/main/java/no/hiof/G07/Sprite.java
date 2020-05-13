@@ -23,7 +23,9 @@ public class Sprite {
     private String filename;
     private int width = 0, height = 0;
 
-    public Sprite(){}
+    public Sprite(){
+        loadImage();
+    }
 
     public Sprite(String filename) {
         this.filename = filename;

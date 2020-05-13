@@ -43,12 +43,9 @@ public abstract class Unit extends GameObject implements ICollidable{
     public void render(Graphics2D g) {
 
         // Render sprite if exists, otherwise render white box
-        if(getSprite() != null){
-            if(getSprite().getImage() == null)
-                getSprite().loadImage();
-
+        if(getSprite() != null)
             g.drawImage(this.getSprite().getImage(), this.getX(), this.getY(), null);
-        }
+
         else {
             g.setColor(new Color(255, 255, 255));   // White
             g.fillRect(getX(), getY(), getWidth(), getHeight());
