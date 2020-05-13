@@ -119,7 +119,7 @@ public class GameConfig {
      * @author jenshr (Jens Rage)
      * @version 0.1
      */
-    class Game extends Canvas implements Runnable{
+    public class Game extends Canvas implements Runnable{
 
         private Window window;
         private Thread thread;

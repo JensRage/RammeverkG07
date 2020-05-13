@@ -178,7 +178,7 @@ public class MenuConfig {
      * @author emilyhbh (Emily Healey)
      * @version 0.1
      */
-    class Menu{
+    public class Menu{
         private ArrayList<JMenuItem> items;
         private JMenuBar mb = new JMenuBar();
 
