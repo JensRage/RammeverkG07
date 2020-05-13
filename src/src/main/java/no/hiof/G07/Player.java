@@ -60,13 +60,13 @@ public class Player extends Unit{
         int key = e.getKeyCode();
 
         if(key == movementControl.up)
-            setVelocityY(-1);
+            setVelocityY(-getMovementSpeed());
         else if (key == movementControl.down)
-            setVelocityY(1);
+            setVelocityY(getMovementSpeed());
         else if (key == movementControl.left)
-            setVelocityX(-1);
+            setVelocityX(-getMovementSpeed());
         else if (key == movementControl.right)
-            setVelocityX(1);
+            setVelocityX(getMovementSpeed());
     }
 
     public void stop(KeyEvent e){
@@ -111,16 +111,16 @@ public class Player extends Unit{
 
     @Override
     public void onCollisionEnter(GameObject collider) {
-        System.out.println("onCollisionEnter Called");
+        //System.out.println("onCollisionEnter Called");
     }
 
     @Override
     public void onCollisionStay(GameObject collider) {
-        System.out.println("onCollisionStay Called");
+        //System.out.println("onCollisionStay Called");
     }
 
     @Override
     public void onCollisionLeave(GameObject collider) {
-        System.out.println("onCollisionLeave Called");
+        //System.out.println("onCollisionLeave Called");
     }
 }
