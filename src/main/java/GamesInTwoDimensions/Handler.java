@@ -55,6 +55,12 @@ public class Handler {
         objects.add(object);
     }
 
+    public void addObjects(ArrayList<GameObject>gameObjects){
+        for(GameObject gameObject : gameObjects){
+            addObject(gameObject);
+        }
+    }
+
     public ArrayList<GameObject> getObjects() {
         return objects;
     }

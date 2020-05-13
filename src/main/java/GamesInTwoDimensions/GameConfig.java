@@ -57,6 +57,16 @@ public class GameConfig {
         return this;
     }
 
+    public GameConfig addObject(GameObject gameObject){
+        handler.addObject(gameObject);
+        return this;
+    }
+
+    public GameConfig addObjects(ArrayList<GameObject> gameObjects){
+        handler.addObjects(gameObjects);
+        return this;
+    }
+
     public GameConfig setName(String name){
         this.name = name;
         return this;
