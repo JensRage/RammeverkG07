@@ -7,6 +7,11 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Class Handler is used to hold all objects in the game, looping through each of them in its tick() and render() functions.
+ * @author jensh
+ * @version 1.0
+ */
 public class Handler {
     private ArrayList<GameObject> objects;
     private CollisionHandler collisionHandler;

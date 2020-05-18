@@ -2,7 +2,7 @@ package GamesInTwoDimensions;
 
 /**
  * This class is designed to be derived from by non friendly Units
- * @version 0.1
+ * @version 1.0
  */
 public class Enemy extends Unit {
 
@@ -14,18 +14,4 @@ public class Enemy extends Unit {
         super(x, y, sprite);
     }
 
-    @Override
-    public void onCollisionEnter(GameObject collider) {
-
-    }
-
-    @Override
-    public void onCollisionStay(GameObject collider) {
-
-    }
-
-    @Override
-    public void onCollisionLeave(GameObject collider) {
-
-    }
 }

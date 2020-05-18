@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * This class is designed to give users more control over the Game object.
  * Its designed as a builder, giving strong command over the most important class.
  * @author emilyhbh (Emily Healey)
- * @version 0.1
+ * @version 1.0
  */
 public class GameConfig {
 
@@ -127,7 +127,7 @@ public class GameConfig {
      * @see java.awt.Canvas
      * @see java.lang.Runnable
      * @author jenshr (Jens Rage)
-     * @version 0.1
+     * @version 1.0
      */
     public class Game extends Canvas implements Runnable{
 

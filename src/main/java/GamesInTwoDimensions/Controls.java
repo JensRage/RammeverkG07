@@ -14,7 +14,7 @@ import java.util.Set;
  * @see java.awt.event.KeyAdapter
  * @see org.reflections.Reflections
  * @author emilyhbh (Emily Healey)
- * @version 0.1
+ * @version 1.0
  */
 public class Controls extends KeyAdapter {
 

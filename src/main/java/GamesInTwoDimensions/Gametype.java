@@ -2,7 +2,7 @@ package GamesInTwoDimensions;
 
 /**
  * Class Gametype
- * @version 0.0000x
+ * @version 0.00001
  */
 public abstract class Gametype {
 

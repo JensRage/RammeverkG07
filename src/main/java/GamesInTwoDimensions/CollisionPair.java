@@ -1,5 +1,10 @@
 package GamesInTwoDimensions;
 
+/**
+ * Class used to hold a pair of colliding GameObjects
+ * @author jenshr
+ * @version 1.0
+ */
 public class CollisionPair {
     private GameObject collidee;
     private GameObject collider;

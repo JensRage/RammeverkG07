@@ -10,11 +10,10 @@ import java.util.ArrayList;
 
 /**
  * Class Sprite
- * SUPER EARLY DEVELOPMENT
  * This class is designed to hold images that represents GameObjects,
  * in other words: what should be rendered to represent each object.
  * @author emilyhbh (Emily Healey)
- * @version 0.0000x
+ * @version 1.0
  */
 public class Sprite {
 
@@ -32,6 +31,9 @@ public class Sprite {
         loadImage();
     }
 
+    /**
+     * Loads an image to be used as the sprite takes width and height from the image unless its previously specified.
+     */
     protected void loadImage() {
 
         // If the sprite has no width or height set than the image shall be loaded in it's full form/size

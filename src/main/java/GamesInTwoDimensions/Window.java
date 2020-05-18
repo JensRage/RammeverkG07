@@ -10,7 +10,7 @@ import java.io.IOException;
  * This class is designed to be the window of our application.
  * It uses the JFrame class to get this functionality
  * @author emilyhbh (Emily Healey)
- * @version 0.1
+ * @version 1.0
  */
 public class Window {
 

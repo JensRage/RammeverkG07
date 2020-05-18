@@ -10,9 +10,9 @@ import java.util.List;
  * It will work on its own but can also be derived from.
  * It holds the players controls and a static list of all player controlled objects.
  * @author emilyhbh (Emily Healey)
- * @version 0.1
+ * @version 1.0
  */
-public class Player extends Unit{
+public class Player extends Unit implements ICollidable{
 
     private MovementControl movementControl;
 
@@ -102,6 +102,12 @@ public class Player extends Unit{
             player.move(e);
     }
 
+    /**
+     * Static method playerStopper()
+     * This method loops through all player controller GameObjects, and calls the stop() function from them
+     * Due to the @KeyReleased flag, this method is called whenever a key is pressed
+     * @param e     KeyEvent that triggered the function call
+     */
     @KeyReleased
     public static void playerStopper(KeyEvent e){
         for (Player player : instances)

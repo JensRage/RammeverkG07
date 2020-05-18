@@ -13,7 +13,7 @@ import static GamesInTwoDimensions.GameConfig.*;
 /**
  * This class is designed to act as a builder for the Menu class
  * @author emilyhbh (Emily Healey)
- * @version 0.1
+ * @version 1.0
  */
 public class MenuConfig {
 
@@ -26,7 +26,7 @@ public class MenuConfig {
 
     /**
      * Adds a "Continue" button to the menu that calls the continueGame() method when clicked.
-     *
+     * @return The MenuConfig object after the change applied by the method.
      */
     public MenuConfig hasContinueBtn(){
         menuItems.add(new JMenuItem(new AbstractAction("Continue") {
@@ -39,7 +39,7 @@ public class MenuConfig {
 
     /**
      * Adds a "Load Game" button to the menu that calls the loadGame() method when clicked.
-     *
+     * @return The MenuConfig object after the change applied by the method.
      */
     public MenuConfig hasLoadGameBtn(){
         menuItems.add(new JMenuItem(new AbstractAction("Load Game") {
@@ -72,7 +72,7 @@ public class MenuConfig {
 
     /**
      * Adds a "Save Game" button to the menu that calls the saveGame() method when clicked.
-     *
+     * @return The MenuConfig object after the change applied by the method.
      */
     public MenuConfig hasSaveGameBtn(){
         menuItems.add(new JMenuItem(new AbstractAction("Save Game") {
@@ -85,7 +85,7 @@ public class MenuConfig {
 
     /**
      * Adds a "New Game" button to the menu that calls the newGame() method when clicked.
-     *
+     * @return The MenuConfig object after the change applied by the method.
      */
     public MenuConfig hasNewGameBtn(){
         menuItems.add(new JMenuItem(new AbstractAction("New Game") {
