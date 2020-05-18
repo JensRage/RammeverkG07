@@ -65,6 +65,11 @@ public abstract class GameObject {
         this.sprite = sprite;
     }
 
+    /**
+     * Assign a key and runnable pair to a hashmap. So the key can be used to run the function later by the interact() function.
+     * @param keyCode keyCode is an Integer value that corresponds to a key on a keyboard
+     * @param keyCommand keyCommand Runnable object. Think of it as a function, this function will be kept to be ran later.
+     */
     public void addKeyCommands(Integer keyCode, Runnable keyCommand) {
         keyCommands.put(keyCode, keyCommand);
     }
@@ -191,12 +196,18 @@ public abstract class GameObject {
         this.y = y;
     }
 
+    /**
+     * Function checkBounds() compares position with width & height in the calculation to see whether the object is within game bounds.
+     */
     private void checkBounds(){
-
         // TODO:: get window size? only checks left wall and top wall
         isVisible = x + width >= 0 && y + height >= 0;
     }
 
+    /**
+     * Function interact(), used to trigger the correct function assigned to the keypress sent, by looking through the keyCommand HashMap.
+     * @param e KeyEvent e, used to get the keyCode()
+     */
     @KeyPressed
     public static void interact(KeyEvent e){
 
