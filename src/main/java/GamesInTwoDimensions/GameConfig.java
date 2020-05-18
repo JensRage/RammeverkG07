@@ -25,7 +25,7 @@ public class GameConfig {
     private static boolean isPaused = true;
 
     public GameConfig() {
-        addKeyListener();
+        game.addKeyListener(new Controls());
     }
 
     public static String getSaveContent(){
@@ -79,11 +79,6 @@ public class GameConfig {
 
     public GameConfig setWindow(Window window){
         this.window = window;
-        return this;
-    }
-
-    public GameConfig addKeyListener(){
-        game.addKeyListener(new Controls());
         return this;
     }
 

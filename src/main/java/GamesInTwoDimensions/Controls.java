@@ -16,7 +16,7 @@ import java.util.Set;
  * @author emilyhbh (Emily Healey)
  * @version 0.1
  */
-public class Controls extends KeyAdapter {
+final public class Controls extends KeyAdapter {
 
     // Finds all methods annotated with @KeyListen and calls them
     Reflections reflections = new Reflections("GamesInTwoDimensions", new MethodAnnotationsScanner());
