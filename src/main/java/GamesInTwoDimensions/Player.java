@@ -54,8 +54,7 @@ public class Player extends Unit implements ICollidable{
         super.render(g);
     }
 
-    // TODO:: change to movespeed variable
-    public void move(KeyEvent e){
+    private void move(KeyEvent e){
         int key = e.getKeyCode();
 
         if(key == movementControl.up)
@@ -68,17 +67,13 @@ public class Player extends Unit implements ICollidable{
             setVelocityX(getMovementSpeed());
     }
 
-    public void stop(KeyEvent e){
+    private void stop(KeyEvent e){
         int key = e.getKeyCode();
 
-        if(key == movementControl.up)
-            setVelocityY(-getMovementSpeed());
-        else if (key == movementControl.down)
-            setVelocityY(getMovementSpeed());
-        else if (key == movementControl.left)
-            setVelocityX(-getMovementSpeed());
-        else if (key == movementControl.right)
-            setVelocityX(getMovementSpeed());
+        if(key == movementControl.up || key == movementControl.down)
+            setVelocityY(0);
+        else if (key == movementControl.left || key == movementControl.right)
+            setVelocityX(0);
     }
 
     public MovementControl getMovementControl() {
@@ -97,7 +92,7 @@ public class Player extends Unit implements ICollidable{
      * @param e     KeyEvent that triggered the function call
      */
     @KeyPressed
-    public static void playerMover(KeyEvent e){
+    final public static void playerMover(KeyEvent e){
         for(Player player : instances)
             player.move(e);
     }
@@ -109,7 +104,7 @@ public class Player extends Unit implements ICollidable{
      * @param e     KeyEvent that triggered the function call
      */
     @KeyReleased
-    public static void playerStopper(KeyEvent e){
+    final public static void playerStopper(KeyEvent e){
         for (Player player : instances)
             player.stop(e);
     }

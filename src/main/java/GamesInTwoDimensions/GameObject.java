@@ -43,6 +43,7 @@ public abstract class GameObject {
         y = 0;
         isVisible = true;
         keyCommands = new HashMap<>();
+        movementSpeed = 1;
         gameObjInstances.add(this);
     }
 
@@ -54,6 +55,7 @@ public abstract class GameObject {
         this.width = this.sprite.image.getWidth(null);
         isVisible = true;
         keyCommands = new HashMap<>();
+        movementSpeed = 1;
         gameObjInstances.add(this);
     }
 
@@ -63,6 +65,7 @@ public abstract class GameObject {
         this.width = width;
         this.height = height;
         this.sprite = sprite;
+        movementSpeed = 1;
     }
 
     /**
