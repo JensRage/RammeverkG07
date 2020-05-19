@@ -73,8 +73,12 @@ public abstract class GameObject {
      * @param keyCode keyCode is an Integer value that corresponds to a key on a keyboard
      * @param keyCommand keyCommand Runnable object. Think of it as a function, this function will be kept to be ran later.
      */
-    public void addKeyCommands(Integer keyCode, Runnable keyCommand) {
+    public void addKeyCommand(Integer keyCode, Runnable keyCommand) {
         keyCommands.put(keyCode, keyCommand);
+    }
+
+    public void removeKeyCommand(Integer keycode){
+        keyCommands.remove(keycode);
     }
 
     /**

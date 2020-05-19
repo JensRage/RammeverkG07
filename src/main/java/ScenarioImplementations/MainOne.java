@@ -29,7 +29,7 @@ public class MainOne {
             p1.setSize(50,100);
 
             // Scenario: Key-map functions
-            p1.addKeyCommands(81, () -> {
+            p1.addKeyCommand(81, () -> {
                 System.out.print("\npressed Q: Took player 1's health from " + p1.getHealth() + " to ");
                 p1.setHealth(p1.getHealth() * 2);
                 System.out.print(p1.getHealth() + "\n");
