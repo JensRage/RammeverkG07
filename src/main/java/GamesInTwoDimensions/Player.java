@@ -35,7 +35,6 @@ public class Player extends Unit implements ICollidable{
     public Player(int x, int y, int width, int height, Sprite sprite, MovementControl movementControl) {
         super(x, y, width, height, sprite);
         this.movementControl = movementControl;
-        movementControl = new MovementControl.Wasd();
     }
 
     /**
