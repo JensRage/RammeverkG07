@@ -1,9 +1,10 @@
 package ScenarioImplementations;
 
 import GamesInTwoDimensions.GameObject;
+import GamesInTwoDimensions.ICollidable;
 import GamesInTwoDimensions.Player;
 
-public class CustomPlayer extends Player {
+public class CustomPlayer extends Player implements ICollidable {
 
     private int health, stamina, magicka;
     private boolean isAlive = true;
