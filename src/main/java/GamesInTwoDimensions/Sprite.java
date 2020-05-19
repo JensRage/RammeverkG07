@@ -50,8 +50,9 @@ public class Sprite {
         }
     }
 
-    public Image getImage() {
-        return image;
+    public void setFilename(String filename){
+        this.filename = filename;
+        loadImage();
     }
 
     public void setWidth(int width) {
@@ -78,6 +79,10 @@ public class Sprite {
 
     public int getHeight() {
         return height;
+    }
+
+    public Image getImage() {
+        return image;
     }
 
     @Override
