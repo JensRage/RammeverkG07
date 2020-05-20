@@ -1,0 +1,163 @@
+@startuml
+
+abstract class GameObject{
+    Sprite sprite
+    void addKeyCommands(keyCode, keyCommand)
+    abstract void tick(delta)
+    abstract void render(graphics)
+    void checkBounds()
+    void interact(keyEvent)
+}
+class CollisionHandler{
+    void tick()
+    boolean checkCollision(collidee, collider)
+    Rectangle getBounds(gameObject)
+    void addCollidable(gameObject)
+    void removeCollidable(gameObject)
+    void wipeCollidableObjects()
+    void wipeCollisionPairs()
+    void wipeLastTicksCollisionPairs()
+}
+class CollisionPair{
+    boolean equals(object)
+    void callOnCollisionLeave()
+    void callOnCollisionEnter()
+    void callOnCollisionStay()
+}
+class CollisionSet<extends ArrayList>{
+    boolean add(collisionPair)
+    CollisionSet findDifference(collisionSet)
+}
+class Controls<extends KeyAdapter>{
+    Reflections reflections
+    Set<Method> keyPressedMethods
+    Set<Method> keyReleasedMethods
+    override void keyTyped(keyEvent)
+    override void keyPressed(keyEvent)
+    override void keyReleased(keyEvent)
+}
+class Enemy<extends Unit>{
+
+}
+class GameConfig{
+    Game game
+    String name
+    Window window
+    GameType type
+    ArrayList<Player> players
+    MenuConfig.Menu startMenu
+    Handler handler
+    boolean isPaused
+    static void pause()
+    static void continue()
+    GameConfig addplayer(player)
+    GameConfig addObject(gameObject)
+    GameConfig addObjects(gameObjects)
+    GameConfig addKeyListener()
+    GameConfig setStartMenu()
+    GameConfig setWindow()
+}
+class Game<extends Canvas, implements Runnable>{
+    Window window
+    Thread thread
+    int fps
+    int TargetFPS
+    boolean running
+    synchronized void start()
+    synchronized void stop()
+    void run()
+    void tick()
+    void render()
+}
+class Handler{
+    ArrayList<GameObject> objects
+    CollisionHandler collisionHandler
+    void tick(delta)
+    void render(graphics)
+    void addObject(gameObject)
+    void addObjects(gameObjects)
+    GameObject removeObject(gameObject)
+}
+interface ICollidable
+interface KeyPressed <<@, orchid>>
+interface KeyReleased <<@, orchid>>
+class MenuConfig{
+    Menu menu
+    ArrayList<JMenuItem> menuItems
+}
+class Menu{
+    ArrayList<JMenuItem> items
+    JMenuBar menuBar
+
+    JMenuBar getMenu()
+}
+class MovementControl{
+    int up
+    int down
+    int left
+    int right
+}
+class WASD
+class Arrows
+class Player<extends Unit, implements ICollidable>{
+    override void tick()
+    override void render()
+    void move(keyEvent)
+    void stop()
+    static void playerMover()
+    static void playerStopper()
+}
+class Sprite{
+    Image image
+    String filename
+    int width
+    int height
+    void loadImage()
+}
+abstract class Unit<extends GameObject>{
+    override void tick(delta)
+    override void render(graphics)
+}
+class Window{
+    int width
+    int height
+    String name
+    JFrame frame
+    File background
+    void openWindow()
+    void addComponent(jComponent)
+    void addGameToFrame(game)
+}
+
+
+GameConfig - Game
+GameConfig - Window
+GameConfig - Menu
+GameConfig - Handler
+GameConfig -o Player
+GameConfig - MenuConfig
+
+MenuConfig ..> Menu
+
+Game - Window
+
+GameObject <|-- Unit
+GameObject - Sprite
+GameObject -+ KeyPressed
+GameObject -+ KeyReleased
+GameObject -o Handler
+Unit <|-- Player
+Unit <|-- Enemy
+Player -+ ICollidable
+Player - MovementControl
+
+CollisionHandler - Handler
+CollisionHandler -> CollisionSet
+CollisionSet -o CollisionPair
+
+Controls - KeyPressed
+Controls - KeyReleased
+
+WASD -* MovementControl
+Arrows -* MovementControl
+@enduml

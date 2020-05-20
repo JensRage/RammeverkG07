@@ -1,0 +1,37 @@
+@startuml
+
+abstract class GameObject{
+    Sprite sprite
+    void addKeyCommands(keyCode, keyCommand)
+    abstract void tick(delta)
+    abstract void render(graphics)
+    void checkBounds()
+    void interact(keyEvent)
+}
+
+abstract class Unit<extends GameObject>{
+    override void tick(delta)
+    override void render(graphics)
+}
+
+class Player<extends Unit, implements ICollidable>{
+    override void tick()
+    override void render()
+    void move(keyEvent)
+    void stop()
+    static void playerMover()
+    static void playerStopper()
+}
+
+class Enemy<extends Unit>{
+
+}
+
+GameObject <|-- Unit
+GameObject - Sprite
+GameObject -o Handler
+Unit <|-- Player
+Unit <|-- Enemy
+
+
+@enduml

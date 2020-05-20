@@ -1,0 +1,61 @@
+@startuml
+
+class GameConfig{
+    Game game
+    String name
+    Window window
+    GameType type
+    ArrayList<Player> players
+    MenuConfig.Menu startMenu
+    Handler handler
+    boolean isPaused
+    static void pause()
+    static void continue()
+    GameConfig addplayer(player)
+    GameConfig addObject(gameObject)
+    GameConfig addObjects(gameObjects)
+    GameConfig addKeyListener()
+    GameConfig setStartMenu()
+    GameConfig setWindow()
+}
+
+class Game<extends Canvas, implements Runnable>{
+    Window window
+    Thread thread
+    int fps
+    int TargetFPS
+    boolean running
+    synchronized void start()
+    synchronized void stop()
+    void run()
+    void tick()
+    void render()
+}
+
+class Handler{
+    ArrayList<GameObject> objects
+    CollisionHandler collisionHandler
+    void tick(delta)
+    void render(graphics)
+    void addObject(gameObject)
+    void addObjects(gameObjects)
+    GameObject removeObject(gameObject)
+}
+
+class Window{
+    int width
+    int height
+    String name
+    JFrame frame
+    File background
+    void openWindow()
+    void addComponent(jComponent)
+    void addGameToFrame(game)
+}
+
+GameConfig - Game
+GameConfig - Window
+GameConfig - Handler
+GameConfig -o Player
+
+@enduml

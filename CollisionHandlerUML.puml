@@ -1,0 +1,28 @@
+@startuml
+
+class CollisionHandler{
+    void tick()
+    boolean checkCollision(collidee, collider)
+    Rectangle getBounds(gameObject)
+    void addCollidable(gameObject)
+    void removeCollidable(gameObject)
+    void wipeCollidableObjects()
+    void wipeCollisionPairs()
+    void wipeLastTicksCollisionPairs()
+}
+class CollisionPair{
+    boolean equals(object)
+    void callOnCollisionLeave()
+    void callOnCollisionEnter()
+    void callOnCollisionStay()
+}
+class CollisionSet<extends ArrayList>{
+    boolean add(collisionPair)
+    CollisionSet findDifference(collisionSet)
+}
+
+CollisionHandler - Handler
+CollisionHandler -> CollisionSet
+CollisionSet -o CollisionPair
+
+@enduml

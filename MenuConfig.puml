@@ -1,0 +1,17 @@
+@startuml
+
+class MenuConfig{
+    Menu menu
+    ArrayList<JMenuItem> menuItems
+}
+
+class Menu{
+    ArrayList<JMenuItem> items
+    JMenuBar menuBar
+
+    JMenuBar getMenu()
+}
+
+GameConfig - Menu
+MenuConfig ..> Menu
+@enduml
