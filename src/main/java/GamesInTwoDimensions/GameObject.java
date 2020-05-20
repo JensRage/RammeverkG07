@@ -59,7 +59,7 @@ public abstract class GameObject {
         gameObjInstances.add(this);
     }
 
-    public GameObject(int x, int y, int width, int height, Sprite sprite) {
+    public GameObject(int x, int y, Sprite sprite, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -213,9 +213,9 @@ public abstract class GameObject {
 
     /**
      * Function checkBounds() compares position with width & height in the calculation to see whether the object is within game bounds.
+     * At current state, only check the left and top constraint of the game
      */
     private void checkBounds(){
-        // TODO:: get window size? only checks left wall and top wall
         isVisible = x + width >= 0 && y + height >= 0;
     }
 
@@ -242,7 +242,7 @@ public abstract class GameObject {
             result = new ObjectMapper().writeValueAsString(this);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-            result = null;  // TODO: better error handling
+            result = null;
         }
 
         return result;

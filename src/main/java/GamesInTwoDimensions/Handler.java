@@ -86,7 +86,7 @@ public class Handler {
             result = om.writeValueAsString(this);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-            result = null;  // TODO: better error handling
+            result = null;
         }
 
         return result;

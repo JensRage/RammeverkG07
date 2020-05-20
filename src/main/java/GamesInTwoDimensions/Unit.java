@@ -17,7 +17,7 @@ public abstract class Unit extends GameObject{
     }
 
     public Unit(int x, int y, int width, int height, Sprite sprite) {
-        super(x, y, width, height, sprite);
+        super(x, y, sprite, width, height);
     }
 
     /**

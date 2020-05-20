@@ -17,8 +17,6 @@ public class Window {
     private int width, height;
     private String name;
     JFrame frame = new JFrame();
-
-    // TODO:: Background Sprite?
     private File background;
 
     public Window(String name, int width, int height) {
