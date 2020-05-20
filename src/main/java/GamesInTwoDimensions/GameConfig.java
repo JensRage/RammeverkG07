@@ -323,5 +323,17 @@ public class GameConfig {
         public Handler getHandler() {
             return handler;
         }
+
+        public void addObject(GameObject gameObject){
+            handler.addObject(gameObject);
+        }
+
+        public void addObjects(ArrayList<GameObject> gameObjects){
+            handler.addObjects(gameObjects);
+        }
+
+        public void removeObject(GameObject gameObject){
+            handler.removeObject(gameObject);
+        }
     }
 }

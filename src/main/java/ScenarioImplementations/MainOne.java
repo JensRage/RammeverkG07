@@ -59,8 +59,7 @@ public class MainOne {
                 .setWindow(window)
                 .game();
 
-        game.getHandler().addObject(e1);
-
+        game.addObject(e1);
 
         // Scenario: Constant object updates are handled automatically in the game.
         // Scenario: open game window is handled automatically by Game object
