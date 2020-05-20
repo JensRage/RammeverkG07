@@ -154,6 +154,14 @@ public abstract class GameObject {
         return isVisible;
     }
 
+    public void visible(){
+        isVisible = true;
+    }
+
+    public void invisible(){
+        isVisible = false;
+    }
+
     public void setVisible(boolean visible) {
         isVisible = visible;
     }
