@@ -60,7 +60,6 @@ public class MenuConfig {
         return this;
     }
 
-    // TODO:: TEMPORARY
     public MenuConfig hasPauseBtn(){
         menuItems.add(new JMenuItem(new AbstractAction("Pause") {
             public void actionPerformed(ActionEvent e) {
@@ -100,8 +99,9 @@ public class MenuConfig {
         return menuItems;
     }
 
-    private void addMenuItem(JMenuItem menuItem) {
+    public MenuConfig addMenuItem(JMenuItem menuItem) {
         menuItems.add(menuItem);
+        return this;
     }
 
     private void continueGame(){
